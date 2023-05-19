@@ -1,0 +1,283 @@
+body {
+    overflow-x: hidden;
+}
+
+/* p::selection {
+    color: #edcc4a ;
+}
+
+h4::selection {
+    color: #edcc4a ;
+}
+
+h1::selection {
+    color: #edcc4a ;
+} */
+
+html {
+    font-size: 99%;
+}
+
+h1, h4, h3, h5, h6, h2, button, a, p, label, div {
+    font-family: 'Montserrat' !important;
+    font-style: normal;
+}
+.logo{
+    width: 12%;
+}
+
+.img-1 {
+    width: 33%;
+    border-radius: 4px;
+}
+
+.food-name {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.food-price {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.food-name-total {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.food-price-total {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.Method {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #000000;
+}
+
+.form-check {
+    background-color: #EFF4FF;
+}
+
+.img12 {
+    background-color: #EFF4FF;
+}
+
+.card-number {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #6F6F6F;
+}
+
+.payment-icon {
+    color: #21ED00;
+    font-size: 1.7rem;
+}
+
+.default {
+    font-weight: 600;
+    font-size: 10px;
+    color: #000000;
+}
+
+.proceed-pay {
+    background: #edcc4a  !important;
+    border-radius: 2px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    color: #FFFFFF !important;
+}
+
+.add-payment {
+    font-weight: 600;
+    font-size: 14px;
+    color: #EB6868 !important;
+
+}
+
+.add-payment:hover {
+    color: #EB6868 !important;
+    cursor: pointer;
+}
+
+.card-details {
+    width: 100%;
+    border: 1px solid #B5B5B5;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #B1B1B1;
+}
+
+.card-date {
+    width: 57%;
+    border: 1px solid #B5B5B5;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #B1B1B1;
+}
+
+.card-cvv {
+    width: 35%;
+    border: 1px solid #B5B5B5;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #B1B1B1;
+}
+
+.proceed-pay12 {
+    width: 100%;
+    background: #edcc4a  !important;
+    border-radius: 2px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    color: #FFFFFF !important;
+}
+.form-check-input{
+    vertical-align:middle;
+}
+
+
+
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 80%;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 70%;
+    }
+
+    .col-lg-5.border-start.ps-4 {
+        padding: 3rem;
+        
+        order: 1;
+        border: none !important;
+    }
+    .col-lg-7.order-lg-1.order-2.pe-lg-5 {
+        padding: 2rem;
+    }
+
+    .row {
+        margin-top: 5rem;
+
+    }
+    .logo{
+        width: 7%;
+    }
+    
+
+    @media screen and (max-width: 762px) {
+        html {
+            font-size: 64%;
+        }
+
+        nav.container-fluid {
+            display: flex;
+            justify-content: center;
+        }
+        .logo{
+            width: 9%;
+        }
+
+        .food-name {
+            
+            font-size: 2.5rem;
+        }
+        .food-price {
+            
+            font-size: 2.5rem;
+        }
+        .food-name-total {
+            
+            font-size: 2.5rem;
+        }
+        .food-price-total {
+            font-size: 2.5rem;       
+        }
+        .Method {
+            font-size: 2.1rem;
+        }
+        .card-number {
+            margin-left: 4rem!important;
+            font-size: 2rem;
+        }
+        .pe-5 {
+            padding-right: 0.5rem!important;
+        }
+        .proceed-pay {
+            font-size: 11px !important;
+        }
+        .form-check-input {
+            width: 1.6em !important;
+            height: 1.6em !important;
+            margin-right: 2rem;
+            margin-top: 2% !important;
+        }
+        .proceed-pay12 {
+            
+            font-size: 1.9rem !important;
+            
+        }
+
+    }
+
+    @media screen and (max-width: 626px) {
+        html {
+            font-size: 60%;
+        }
+        .logo{
+            width: 10%;
+        }
+    }
+
+    @media screen and (max-width: 520px) {
+        .img-1 {
+            width: 25%;
+            border-radius: 4px;
+        }
+
+    }
+
+    @media screen and (max-width: 414px) {
+        html{
+            font-size: 50%;
+        }
+        .default {
+            font-weight: 600;
+            font-size: 9px;
+            color: #000000;
+        }
+        
+    }
+
+    @media screen and (max-width: 376px) {
+        
+    }
+
+    @media screen and (min-width: 1700px) {
+        html {
+            font-size: 130%;
+        }
+        img.mt-4 {
+            width: 6%;
+        }
+    }
+
+    @media screen and (min-width: 1920px) {
+        html {
+            font-size: 131%;
+        }
+    }}

@@ -1,0 +1,40 @@
+<!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle class="demo-inline-calendar-card" matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+  </mat-form-field> -->
+<div class="row">
+  <div class="">
+    <p class="">1. Select an Available Date</p>
+    <div class="alert alert-warning" *ngIf="datesArrr.length == 0">No Dates Data Found !</div>
+    <div class="" *ngIf="datesArrr.length>0">
+      <mat-card class="demo-inline-calendar-card" style="display: inline-block;">
+        <mat-calendar [dateClass]="dateClass" [(selected)]="selectedDate" [minDate]="minDate" [maxDate]="maxDate">
+        </mat-calendar>
+      </mat-card>
+    </div>
+    {{selectedDate}}
+  </div>
+
+
+  <div class="my-4">
+    <div>
+      <label>2.Select a Pick Up Time</label>
+      <!-- <div id="rectangle"></div> -->
+      <br>
+      <button class="btn btn-light" style="margin-top: 30px;">8:00AM-10:00AM</button>
+      <button class="btn btn-light" style="margin-top: 30px;">10:00AM-12:00AM</button>
+      <br>
+      <button class="btn btn-light" style="margin-top: 30px;">12:00AM-02:00PM</button>
+      <button class="btn btn-light" style="margin-top: 30px;">02:00PM-04:00PM</button>
+      <br>
+      <button class="btn btn-light" style="margin-top: 30px;">04:00PM-06:00PM</button>
+
+      <div class="flex-column d-flex">
+        <label class="mb-3">3.Select quantity</label>
+        <input type="number" style="max-width: 25%;margin-left: 4vh;" class="form-control w-50">
+      </div>
+    </div>
+  </div>
+</div>

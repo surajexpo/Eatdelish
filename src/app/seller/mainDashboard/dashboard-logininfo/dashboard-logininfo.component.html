@@ -1,0 +1,42 @@
+<div class="col-12 bg-secondary12 pt-5 ps-5 pe-5 ">
+    <div class="bg-body p-4 ps-5 loginInfo12">
+        <div class="col-12">
+            <p class="mb-0 info">Information</p>
+            <form>
+                <p class="input-name mb-0 mt-5 mb-2">Chef Name</p>
+                <div class="col-6 inner-addon right-addon">
+                    <i class="glyphicon fal fa-pencil"></i>
+                    <input type="text" class="py-1 ps-3" name="firstName" [(ngModel)]="sellerInfo.firstName" placeholder={{sellerInfo.firstName}}>
+                </div>
+                <p class="input-name mb-0 mt-4 mb-2">Country</p>
+                <div class="col-6 inner-addon right-addon">
+                    <i class="glyphicon fal fa-pencil"></i>
+                    <input type="text" class="py-1 ps-3" name="country" [(ngModel)]="sellerInfo.country" placeholder={{sellerInfo.country}}>
+                </div>
+                <p class="input-name mb-0 mt-4 mb-2">Zipcode</p>
+                <div class="col-6 inner-addon right-addon">
+                    <i class="glyphicon fal fa-pencil"></i>
+                    <input type="text" class="py-1 ps-3" name="zipcode" [(ngModel)]="sellerInfo.zipcode" placeholder={{sellerInfo.zipcode}}>
+                </div>
+                <p class="input-name mb-0 mt-4 mb-2">Location</p>
+                <div class="col-6 inner-addon right-addon">
+                    <i class="glyphicon fal fa-pencil"></i>
+                    <input type="text" class="py-1 ps-3" name="location" [(ngModel)]="sellerInfo.location" placeholder={{sellerInfo.location}}>
+                </div>
+                <p class="input-name mb-0 mt-4 mb-2">State</p>
+                <div class="col-6 inner-addon right-addon">
+                    <i class="glyphicon fal fa-pencil"></i>
+                    <input type="text" class="py-1 ps-3" name="state" [(ngModel)]="sellerInfo.state" placeholder={{sellerInfo.state}}>
+                </div>
+            </form>
+            <!-- <div class="d-flex justify-content-center">
+                <button class="btn btn12 ">-<i class="fas fa-user-alt  me-2"></i>Account
+                    Deactivation</button>
+            </div> -->
+            <div class="d-flex justify-content-end">
+                <button class="btn btn12" (click)="updateInfo()">update</button>
+            </div>
+
+        </div>
+    </div>
+</div>

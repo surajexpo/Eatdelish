@@ -1,0 +1,62 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: #E5E5E5 !important;
+
+}
+
+html {
+    font-size: 99%;
+}
+
+h1, h4, h3, h5, h6, h2, button, a, p, label, div {
+    font-family: 'Montserrat' !important;
+    font-style: normal;
+}
+
+
+.logo-width{
+    width: 20%;
+}
+.logo-name {
+    font-family: cambria !important;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 28px;
+    color: #023047;
+}
+
+.dropdown.float-end {
+    width: 20%;
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #edcc4a  !important;
+    border-radius: 6px;
+    color: white !important;
+}
+
+.profile-img1 {
+    width: 110%;
+    border-radius: 50%;
+}
+
+.sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.dashbord-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+.cursor {
+    cursor: pointer;
+}

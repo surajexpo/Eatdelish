@@ -1,0 +1,1263 @@
+<div class="container">
+    <a class="navbar-brand logo-container d-flex align-items-end" routerLink="/seller"> <img
+            src="../../../assets/images/image 12.png" class="logo mx-2">
+    </a>
+    <mat-stepper labelPosition="bottom">
+        <mat-step class="kitchen-name" label="Name Your Kitchen" state="name">
+            <form #formFirst="ngForm">
+                <ng-template #labelOne>Choose plan</ng-template>
+                <div class="row border name-shop text-center mt-5 px-3">
+                    <h1 class="mt-4">Name your Kitchen</h1>
+                    <p class="mb-4 choose-font">Choose a memorable name that reflects your style.</p>
+                    <div class="row rounded border  m-auto">
+                        <div class="col-9 d-flex justify-content-between align-items-center">
+                            <!-- <h5>Lorem</h5> -->
+                            <input type="text" class="border-0 check-input" placeholder="Enter Kitchen Name"
+                                name="kitchenName" [(ngModel)]="registration.kitchenName" #box
+                                (keyup)="checkName(box.value)" required />
+                            <p class="btn avail-button" id="availableShow"><i class="fa fa-check"
+                                    aria-hidden="true"></i> Available
+                            </p>
+                        </div>
+                        <div class="col-3  border-start d-flex justify-content-center "><button type="button"
+                                class="btn btn-link text-decoration-none  check-avail-button">Check
+                                Availability</button></div>
+                    </div>
+                    <div class="mt-2">
+                        <p class="link-para">Your Kitchen name will appear in your Kitchen and next to each of
+                            your listings
+                            throughout Eat Delish.
+                            After
+                            you open your Kitchen’ can </p>
+                        <p class="link-para">Change your name once. <a> here are some tips for
+                                picking a Kitchen
+                                name.</a> </p>
+                    </div>
+                </div>
+                <div class="radio-box">
+                    <h5>Which of these best describes you?</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" value="Selling is my full- time job" type="radio"
+                            name="flexRadioDefault" [(ngModel)]="registration.bestDescribe">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Selling is my full- time job
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="I sell part- time but hope to sell full-time"
+                            type="radio" name="flexRadioDefault" [(ngModel)]="registration.bestDescribe">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            I sell part- time but hope to sell full-time
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="I sell part-time and that’s how I like it" type="radio"
+                            name="flexRadioDefault" [(ngModel)]="registration.bestDescribe">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            I sell part-time and that’s how I like it
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="Other" type="radio" name="flexRadioDefault"
+                            [(ngModel)]="registration.bestDescribe">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Other
+                        </label>
+                    </div>
+                </div>
+                <div class="text-end mt-5">
+                    <button type="button" class="btn btn-link text-decoration-none save-button"
+                        [disabled]="!formFirst.valid" mat-button matStepperNext>
+                        Save
+                        and continue
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step label="Pickup Location" state="preferences">
+            <div class="shop-preferences mt-5">
+                <form #formSecond="ngForm">
+                    <div class="border shop-prefer text-center px-5">
+                        <h1 class="my-4">Pickup Location</h1>
+                        <p class="mb-5 choose-font">Let’s get started! Tell us where the customer should come to pickup
+                            their food.</p>
+                        <div class="row px-sm-5 my-5">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-flex">Pin Code</label>
+                                    <input type="number" class="form-control" name="pinCode"
+                                        [(ngModel)]="registration.pinCode" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-flex">Flat, House No., Building,
+                                        Apartment</label>
+                                    <input type="text" class="form-control" name="houseNumber" id=""
+                                        [(ngModel)]="registration.houseNumber" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-sm-5 my-5">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-flex">Area, Colony, Street,
+                                        Sector, Village</label>
+                                    <input type="text" class="form-control" id="" name="kitchenArea"
+                                        [(ngModel)]="registration.kitchenArea" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-flex">Landmark</label>
+                                    <input type="text" class="form-control" id=""
+                                        placeholder="E.g. Near AIIMS Flyover, Behind Venish Mall, etc." name="landMark"
+                                        [(ngModel)]="registration.landMark" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-sm-5 my-5">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label d-flex">Town/City</label>
+                                    <input type="text" class="form-control" id="" name="townCity"
+                                        [(ngModel)]="registration.townCity" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1"
+                                        class="form-label d-flex">State/Province/Region</label>
+                                    <select class="form-select" aria-label="Default select example" name="countryState"
+                                        [(ngModel)]="registration.countryState" required>
+                                        <option selected>select</option>
+                                        <option value="Alabama">Alabama</option>
+                                        <option value="Alaska">Alaska</option>
+                                        <option value="Arizona">Arizona</option>
+                                        <option value="Arkansas">Arkansas</option>
+                                        <option value="California">California</option>
+                                        <option value="Colorado">Colorado</option>
+                                        <option value="Connecticut">Connecticut</option>
+                                        <option value="Delaware">Delaware</option>
+                                        <option value="District Of Columbia">District Of Columbia</option>
+                                        <option value="Florida">Florida</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Hawaii">Hawaii</option>
+                                        <option value="Idaho">Idaho</option>
+                                        <option value="Illinois">Illinois</option>
+                                        <option value="Indiana">Indiana</option>
+                                        <option value="Iowa">Iowa</option>
+                                        <option value="Kansas">Kansas</option>
+                                        <option value="Kentucky">Kentucky</option>
+                                        <option value="Louisiana">Louisiana</option>
+                                        <option value="Maine">Maine</option>
+                                        <option value="Maryland">Maryland</option>
+                                        <option value="Massachusetts">Massachusetts</option>
+                                        <option value="Michigan">Michigan</option>
+                                        <option value="Minnesota">Minnesota</option>
+                                        <option value="Mississippi">Mississippi</option>
+                                        <option value="Missouri">Missouri</option>
+                                        <option value="Montana">Montana</option>
+                                        <option value="Nebraska">Nebraska</option>
+                                        <option value="Nevada">Nevada</option>
+                                        <option value="New Hampshire">New Hampshire</option>
+                                        <option value="New Jersey">New Jersey</option>
+                                        <option value="New Mexico">New Mexico</option>
+                                        <option value="New York">New York</option>
+                                        <option value="North Carolina">North Carolina</option>
+                                        <option value="North Dakota">North Dakota</option>
+                                        <option value="Ohio">Ohio</option>
+                                        <option value="Oklahoma">Oklahoma</option>
+                                        <option value="Oregon">Oregon</option>
+                                        <option value="Pennsylvania">Pennsylvania</option>
+                                        <option value="Rhode Island">Rhode Island</option>
+                                        <option value="South Carolina">South Carolina</option>
+                                        <option value="South Dakota">South Dakota</option>
+                                        <option value="Tennessee">Tennessee</option>
+                                        <option value="Texas">Texas</option>
+                                        <option value="Utah">Utah</option>
+                                        <option value="Vermont">Vermont</option>
+                                        <option value="Virginia">Virginia</option>
+                                        <option value="Washington">Washington</option>
+                                        <option value="West Virginia">West Virginia</option>
+                                        <option value="Wisconsin">Wisconsin</option>
+                                        <option value="Wyoming">Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-sm-5 my-5">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label d-flex">Add short description
+                                        about your kitchen</label>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                            id="floatingTextarea2" style="height: 100px" name="kitchenDesc"
+                                            [(ngModel)]="registration.kitchenDesc"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-end my-5">
+                        <button type="button" class="btn btn-link text-decoration-none save-button "
+                            [disabled]="!formSecond.valid" mat-button matStepperNext> Save
+                            and continue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step label="Stock Your Kitchen" state="stock">
+
+            <div id="step1">
+                <div class="shop-stock text-center">
+                    <h1 class="mt-2">Upload pictures of your Kitchen</h1>
+                    <p class="mb-5 choose-font m-auto">A verified kitchen badge helps in making your kitchen more
+                        noticeable.</p>
+                    <div class="row border p-5 mt-5 add-stock-contain justify-content-md-between">
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc">
+                            <!-- <button class="add-stock-button">
+                                 <i class="fas fa-plus"></i>
+                            </button> -->
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc">
+
+                            <img [src]="imageSrc" class="" *ngIf="imageSrc" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc = '' "
+                                *ngIf="imageSrc">Remove
+                            </button>
+                        </div>
+
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc1">
+                            <!-- <button class="add-stock-button">
+                                                                                 <i class="fas fa-plus"></i>
+                                                                            </button> -->
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile1($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc1">
+
+                            <img [src]="imageSrc1" class="" *ngIf="imageSrc1" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc1 = '' "
+                                *ngIf="imageSrc1">Remove
+                            </button>
+                        </div>
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc2">
+                            <!-- <button class="add-stock-button">
+                                                                                                                                 <i class="fas fa-plus"></i>
+                                                                                                                            </button> -->
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile2($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc2">
+
+                            <img [src]="imageSrc2" class="" *ngIf="imageSrc2" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc2 = '' "
+                                *ngIf="imageSrc2">Remove
+                            </button>
+                        </div>
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc3">
+                            <!-- <button class="add-stock-button">
+                                                                                                                                                                                 <i class="fas fa-plus"></i>
+                                                                                                                                                                            </button> -->
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile3($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc3">
+
+                            <img [src]="imageSrc3" class="" *ngIf="imageSrc3" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc3 = '' "
+                                *ngIf="imageSrc3">Remove
+                            </button>
+                        </div>
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc4">
+                            <!-- <button class="add-stock-button">
+                                                                                                                                                                                                                                 <i class="fas fa-plus"></i>
+                                                                                                                                                                                                                            </button> -->
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile4($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc4">
+
+                            <img [src]="imageSrc4" class="" *ngIf="imageSrc4" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc4 = '' "
+                                *ngIf="imageSrc4">Remove
+                            </button>
+                        </div>
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc5">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile5($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc5">
+
+                            <img [src]="imageSrc5" class="" *ngIf="imageSrc5" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc5 = '' "
+                                *ngIf="imageSrc5">Remove
+                            </button>
+                        </div>
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc6">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile6($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc6">
+
+                            <img [src]="imageSrc6" class="" *ngIf="imageSrc6" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc6 = '' "
+                                *ngIf="imageSrc6">Remove
+                            </button>
+                        </div>
+
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc7">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile7($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc7">
+
+                            <img [src]="imageSrc7" class="" *ngIf="imageSrc7" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc7 = '' "
+                                *ngIf="imageSrc7">Remove
+                            </button>
+                        </div>
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc8">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile8($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc8">
+
+                            <img [src]="imageSrc8" class="" *ngIf="imageSrc8" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc8 = '' "
+                                *ngIf="imageSrc8">Remove
+                            </button>
+                        </div>
+
+
+
+                        <div class="add-stock border m-2" *ngIf="!imageSrc9">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" (change)="getFile9($event)"
+                                    style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div>
+                        <div class="position-relative add-stock border m-2" *ngIf="imageSrc9">
+
+                            <img [src]="imageSrc9" class="" *ngIf="imageSrc9" style="height: 202px; width:154px">
+                            <button class="btn btn-danger position-absolute" (click)="imageSrc9 = '' "
+                                *ngIf="imageSrc9">Remove
+                            </button>
+                        </div>
+                        <!-- <div class="add-stock border m-2">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" multiple
+                                    (change)="getFile($event)" style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div> -->
+
+                        <!-- <div class="add-stock border m-2">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" multiple
+                                    (change)="getFile($event)" style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div> -->
+                        <!-- <div class="add-stock border m-2">
+                            <button class="add-photo-button">
+                                <i class="fas fa-camera "></i>
+                                <input type="file" accept="image/*" name="photo" id="file" multiple
+                                    (change)="getFile($event)" style="display: none;" required>
+                                <label for="file" class="add-food">ADD FOOD PHOTO</label>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="text-end mt-5">
+                    <button type="button" class="btn btn-link text-decoration-none save-button " (click)="next()">
+                        Skip</button>
+                </div>
+                <div class="text-end mb-4 mt-2">
+                    <button type="button" class="btn btn-link text-decoration-none save-button"
+                        (click)="nextAfterImagesUpload()">
+                        Save and
+                        continue
+                    </button>
+                </div>
+            </div>
+            <div id="step2">
+                <div class="shop-stock text-center">
+                    <h1 class="mt-2">Add Products to Sell</h1>
+                    <div class="row border p-5 my-5 add-stock-contain ">
+                        <h1>Add Listing</h1>
+                        <!-- Modal -->
+                        <div class="modal fade" id="PhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-width">
+                                <div class="modal-content">
+                                    <h2 class="modal-title text-center pt-2" id="exampleModalLabel">Upload Food</h2>
+                                    <!-- <button
+                                    type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close">
+                                </button> -->
+                                    <div class="modal-header p-0 m-0 border-0">
+                                    </div>
+                                    <div class="modal-body">
+                                        <form #addPhoto="ngForm" id="addPhoto">
+                                            <div class="row px-2 mb-2 day-container">
+                                                <!--  -->
+                                                <div class="col-sm-5 p-2 mb-3 border">
+                                                    <div class="row m-auto">
+                                                        <div class="border m-2 p-1 rounded "
+                                                            *ngFor="let photo of images; let i = index"
+                                                            style="width: 150px;height: 150px;"> <img [src]="photo"
+                                                                alt="" style="width: 145px;height: 145px;"></div>
+
+                                                        <!-- <div class="border m-2" style="width: 100px;height: 150px;">
+                                                           
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>
+                                                        <div class="border m-2" style="width: 100px;height: 150px;">
+                                                        </div>-->
+
+                                                        <!-- <div class="d-flex justify-content-center my-3">
+                                                        <button class="add-photo-btn btn-dark p-2" type="button">
+                                                            <input type="file" accept="image/*" style="display: none;"
+                                                                name="photo" id="foodPhoto"
+                                                                (change)="onImageSelect($event)" required />
+                                                            <label for="file" *ngIf="!images" name="image"
+                                                                class="add-food-mod mb-0">ADD
+                                                                FOOD
+                                                                PHOTO</label>
+                                                         
+                                                        </button>
+                                                    </div> -->
+                                                        <input type="file" id="getImages" multiple
+                                                            (change)="getFiles($event)" />
+                                                        <!-- <button #getImages class=""> </button> -->
+                                                        <!-- <div class="d-flex flex-column" *ngIf="imageSrc"> <img
+                                                                [src]="imageSrc" class="add-stock">
+                                                            <button class="btn" (click)="imageSrc = '' ">Remove
+                                                            </button>
+                                                        </div> -->
+                                                        <!-- <div *ngIf="photo.touched && !photo.valid" [ngClass]="['error']">
+                                                        <div *ngIf="photo.errors?.['required']">
+                                                            <p class="text-danger">Photo select is required.</p>
+                                                        </div>
+                                                    </div> -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-7 p-3  ">
+                                                    <div class="mb-3">
+                                                        <p class="text-start mb-0">Food Name</p>
+                                                        <input type="text" class="form-control" id="foodName"
+                                                            #photo="ngModel" [(ngModel)]="addFoodPhoto.Name" name="Name"
+                                                            required />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="mb-3 col-sm-6 ">
+                                                            <p class="text-start mb-0">Price</p>
+                                                            <input type="number" class="form-control" placeholder="$"
+                                                                [(ngModel)]="addFoodPhoto.price" name="price"
+                                                                required />
+                                                        </div>
+                                                        <div class="mb-3 col-sm-6 ">
+                                                            <p class="text-start mb-0">Category</p>
+                                                            <select class="form-select"
+                                                                [(ngModel)]="addFoodPhoto.foodType" name="foodType"
+                                                                aria-label="Default select example" required>
+                                                                <option selected>select</option>
+                                                                <option value="Breakfast">Breakfast</option>
+                                                                <option value="Lunch">Lunch</option>
+                                                                <option value="Snacks">Snacks</option>
+                                                                <option value="Dinner">Dinner</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div *ngIf="ifDays">
+                                                        <div class="row">
+                                                            <div class="col-4 ">
+                                                                <p class="text-start mb-0 ml-2 ">Select Days</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">Time From</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">To</p>
+                                                            </div>
+                                                        </div>
+                                                         <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75" type="checkbox"
+                                                                    id="monday" [(ngModel)]="addFoodPhoto.alldays"
+                                                                    name="alldays">
+                                                                <label class="form-check-label  m-auto ">All
+                                                                    days</label>
+                                                            </div>
+                                                            <div class="col-4 ">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    [disabled]="!addFoodPhoto.alldays"
+                                                                    [(ngModel)]="addFoodPhoto.alldaysFrom"
+                                                                    name="alldaysFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    [disabled]="!addFoodPhoto.alldays"
+                                                                    [(ngModel)]="addFoodPhoto.alldaysTo"
+                                                                    name="alldaysTo" required />
+                                                            </div>
+
+                                                        </div> -->
+                                                    <!-- <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75" type="checkbox"
+                                                                    id="monday" [(ngModel)]="addFoodPhoto.monday"
+                                                                    name="monday">
+                                                                <label class="form-check-label  m-auto ">Monday</label>
+                                                            </div>
+                                                            <div class="col-4 ">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    [disabled]="!addFoodPhoto.monday"
+                                                                    [(ngModel)]="addFoodPhoto.mondayFrom"
+                                                                    name="mondayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    [disabled]="!addFoodPhoto.monday"
+                                                                    [(ngModel)]="addFoodPhoto.mondayTo" name="mondayTo"
+                                                                    required />
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75" type="checkbox"
+                                                                    [(ngModel)]="addFoodPhoto.tuesday" name="tuesday">
+                                                                <label class="form-check-label  m-auto ">Tuesday</label>
+                                                            </div>
+                                                            <div class="col-4 ">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    name="tuesdayFrom"
+                                                                    [disabled]="!addFoodPhoto.tuesday"
+                                                                    [(ngModel)]="addFoodPhoto.tuesdayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control fs-6"
+                                                                    name="tuesdayTo" [disabled]="!addFoodPhoto.tuesday"
+                                                                    [(ngModel)]="addFoodPhoto.tuesdayTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75 " type="checkbox"
+                                                                    name="wednesday"
+                                                                    [(ngModel)]="addFoodPhoto.wednesday">
+                                                                <label
+                                                                    class="form-check-label  m-auto">Wednesday</label>
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.wednesday"
+                                                                    name="wednesdayFrom"
+                                                                    [(ngModel)]="addFoodPhoto.wednesdayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.wednesday"
+                                                                    name="wednesdayTo"
+                                                                    [(ngModel)]="addFoodPhoto.wednesdayTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75 " type="checkbox"
+                                                                    name="thursday" [(ngModel)]="addFoodPhoto.thursday">
+                                                                <label
+                                                                    class="form-check-label  m-auto ">Thursday</label>
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    name="thursdayFrom"
+                                                                    [disabled]="!addFoodPhoto.thursday"
+                                                                    [(ngModel)]="addFoodPhoto.thursdayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    name="thursdayTo"
+                                                                    [disabled]="!addFoodPhoto.thursday"
+                                                                    [(ngModel)]="addFoodPhoto.thursdayTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75 " type="checkbox"
+                                                                    name="friday" [(ngModel)]="addFoodPhoto.friday">
+                                                                <label class="form-check-label  m-auto ">Friday</label>
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    name="fridayFrom" [disabled]="!addFoodPhoto.friday"
+                                                                    [(ngModel)]="addFoodPhoto.fridayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    name="fridayTo" [disabled]="!addFoodPhoto.friday"
+                                                                    [(ngModel)]="addFoodPhoto.fridayTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75 " type="checkbox"
+                                                                    name="saturday" [(ngModel)]="addFoodPhoto.saturday">
+                                                                <label
+                                                                    class="form-check-label  m-auto ">Saturday</label>
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.saturday"
+                                                                    name="saturdayFrom"
+                                                                    [(ngModel)]="addFoodPhoto.saturdayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.saturday"
+                                                                    name="saturdayTo"
+                                                                    [(ngModel)]="addFoodPhoto.saturdayTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <input class="form-check-input h-75 " type="checkbox"
+                                                                    name="sunday" [(ngModel)]="addFoodPhoto.sunday">
+                                                                <label class="form-check-label  m-auto ">Sunday</label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.sunday" name="sundayFrom"
+                                                                    [(ngModel)]="addFoodPhoto.sundayFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.sunday" name="sundayTo"
+                                                                    [(ngModel)]="addFoodPhoto.sundayTo" required />
+                                                            </div>
+                                                        </div> 
+                                                        <p>Or</p>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            (click)=" ifDateSelect()">Select Occasion
+                                                            Date</button>
+                                                    </div>
+                                                    -->
+                                                    <!-- <div *ngIf="ifDate">
+                                                        <div class="row mb-3 ">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <label class="form-check-label  m-auto ">Select
+                                                                    Date</label>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <input type="date" class="form-control"
+                                                                    [(ngModel)]="addFoodPhoto.occasionDate"
+                                                                    name="occasionDate" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4 ">
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">Time From</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">To</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <label class="form-check-label  m-auto ">Select
+                                                                    Time</label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.occasionDate"
+                                                                    [(ngModel)]="addFoodPhoto.occasionDateFrom"
+                                                                    name=" occasionDateFrom" required />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    [disabled]="!addFoodPhoto.occasionDate"
+                                                                    [(ngModel)]="addFoodPhoto.occasionDateTo"
+                                                                    name=" occasionDateTo" required />
+                                                            </div>
+                                                        </div>
+                                                        <p>Or</p>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            (click)="ifDaySelect()">Select Days
+                                                        </button>
+                                                    </div>  -->
+                                                    <div class="row">
+                                                        <p>Select available Dates with available time</p>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <mat-card class="demo-inline-calendar-card">
+                                                                    <mat-calendar [(selected)]="selected">
+                                                                    </mat-calendar>
+                                                                </mat-card>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <div *ngIf="selected" class=" mt-4">
+                                                                    <form #dateForm="ngForm">
+                                                                        <p class="text-start">Selected date</p>
+                                                                        <p class="text-start text-primary">{{selected|
+                                                                            date:
+                                                                            'dd/MM/YYYY' }}</p>
+                                                                        <p class="form-check-label text-start mb-0">
+                                                                            Select time from</p>
+                                                                        <input type="time"
+                                                                            class="form-control  fs-6  text-primary"
+                                                                            name=" occasionDateFrom"
+                                                                            [(ngModel)]="startTime" name="startTime"
+                                                                            required />
+                                                                        <p class="form-check-label text-start mb-0">
+                                                                            Select time to</p>
+                                                                        <input type="time"
+                                                                            class="form-control  fs-6  text-primary"
+                                                                            name=" occasionDateFrom"
+                                                                            [(ngModel)]="endTime" name="endTime"
+                                                                            required />
+                                                                        <button type="button"
+                                                                            class="btn btn-primary mt-3"
+                                                                            (click)="getData()"
+                                                                            [disabled]="!dateForm.valid">confirm</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div *ngIf="dataArr.length">
+                                                            <div class="row mt-3">
+
+                                                                <p>Selected Date and Time</p>
+                                                                <div class="col-4">
+                                                                    <p class="text-start mb-0 ml-2 ">Date</p>
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <p class="text-start mb-0">Time From</p>
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <p class="text-start mb-0">To</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3" *ngFor="let data of  dataArr">
+                                                                <!-- <input type="date" value={{selected}} > -->
+                                                                <div class="col-4 d-flex align-items-center">
+                                                                    <!-- <label class="form-check-label  m-auto ">
+                                                                        {{selected| date: 'dd/MM/YYYY' }}</label> -->
+                                                                    <label class="form-check-label  m-auto ">
+                                                                        {{data.date }}</label>
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <input type="time" class="form-control  fs-6"
+                                                                        value={{data.startTime}} readonly />
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <input type="time" class="form-control  fs-6"
+                                                                        value={{data.endTime}} readonly />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+
+
+
+
+
+
+
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label d-flex">Description</label>
+                                                        <div class="form-floating">
+                                                            <textarea class="form-control" style="height:70px"
+                                                                [(ngModel)]="addFoodPhoto.discription"
+                                                                #description="ngModel" name="discription"
+                                                                required></textarea>
+                                                            <div *ngIf="description.touched">
+                                                                <div *ngIf="description.errors?.['required']">
+                                                                    <p class="text-danger text-start">Description is
+                                                                        required.</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label d-flex">Food Allergy</label>
+                                                        <div class="form-floating">
+                                                            <textarea class="   "
+                                                                [(ngModel)]="addFoodPhoto.foodAllergy"
+                                                                #foodAllergy="ngModel" style="height:70px"
+                                                                name="foodAllergy" required></textarea>
+                                                            <div *ngIf="description.touched">
+                                                                <div *ngIf="foodAllergy.errors?.['required']">
+                                                                    <p class="text-danger text-start">Food allergy
+                                                                        is
+                                                                        required.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <button type="button" class="btn cancel-btn"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn save-button" aria-label="close"
+                                                            [disabled]="!addPhoto.valid"
+                                                            (click)="uploadData('PhotoModal')"
+                                                            data-bs-dismiss="modal">Upload</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="food-photo  m-2" *ngFor="let pic of photos;let productNum=index;">
+                                <p class="m-0">{{pic.name}}</p>
+                                <div class="border add-stock"> <img [src]="pic.photo" alt=""></div>
+                                <p class="text-center"> Product {{productNum+1}}</p>
+                            </div>
+                        </div>
+                        <div class="add-stock border d-flex justify-content-center align-items-center m-2">
+                            <button class="add-photo-button" data-bs-toggle="modal" data-bs-target="#PhotoModal">
+                                <i class="fas fa-camera "></i>
+                                <p class="add-food" *ngIf="!imgUrl">ADD FOOD</p>
+                                <p class="add-food" *ngIf="imgUrl">ADD MORE FOOD</p>
+                            </button>
+                        </div>
+                        <!-- <div class="inputCameraLabel"><span>Add Product</span></div> -->
+
+                    </div>
+
+                </div>
+                <div class="text-end mt-5">
+                    <button type="button" class="btn btn-link text-decoration-none save-button " (click)="prev()">
+                        Prev</button>
+                </div>
+                <div class="text-end mb-4 mt-2">
+                    <button type="button" class="btn btn-link text-decoration-none save-button " mat-button
+                        matStepperNext>
+                        Save and
+                        continue </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step label="How You'll Get Paid" state="deposit">
+            <form #getPaid="ngForm">
+                <div class="deposit-box border mt-5">
+                    <h4>Where should we deposite your funds?</h4>
+                    <p><i class="fas fa-lock"></i> your information is protected using SSl encryption and
+                        security.</p>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Full name on account</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="" class="form-control" [(ngModel)]="registration.nameOnAccount"
+                                name="nameOnAccount" required />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Account type</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="" class="form-control" [(ngModel)]="registration.accountType"
+                                name="accountType" required />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Routing number </h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="number" id="" class="form-control" [(ngModel)]="registration.routingNumber"
+                                name="routingNumber" required />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Account number</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="number" id="" class="form-control" [(ngModel)]="registration.accountNumber"
+                                name="accountNumber" required />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="deposit-box border mt-5">
+                    <h4>Tell us little bit about yourself</h4>
+                    <p>For your protection we may verify your identity with a secure with a secure third- party
+                        service.
+                        this information will never be displayed publicly on Eat Delish. </p>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Country of residence</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="" class="form-control" [(ngModel)]="registration.countryResident"
+                                name="countryResident" required />
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>First name</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="" class="form-control" [(ngModel)]="registration.firstName"
+                                name="firstName" required />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Last name </h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="" class="form-control" [(ngModel)]="registration.lastName"
+                                name="lastName" required />
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Your date of birth</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- <div class="d-flex w-75">
+                            <select class="form-select"  aria-label="Default select example">
+                                <option selected>Month</option>
+
+                            </select>
+                            <select class="form-select mx-3" aria-label="Default select example">
+                                <option selected>Day</option>
+
+                            </select>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Year</option>
+
+                            </select>
+                        </div> -->
+                            <input type="date" class="form-control" [(ngModel)]="registration.sellerDob"
+                                name="sellerDob" required />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h4>Last 4 of social security
+                                number</h4>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center">
+                            <h4>XXX-XX &nbsp;</h4>
+                            <input type="number" id="" class="form-control w-50"
+                                [(ngModel)]="registration.securityNumber" name="securityNumber" required />
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <div class="deposit-box border border-top-0">
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-sm-6">
+                            <h1>Home address</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="mb-3 col-sm-6">
+                                    <h4 class="form-label ">Number</h4>
+                                    <input type="number" class="form-control ml-4" id=""
+                                        [(ngModel)]="registration.homeNumber" name="homeNumber" required />
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <h4 for="text" class="form-label">Street Name</h4>
+                                    <input type="text" class="form-control" id="" [(ngModel)]="registration.streetName"
+                                        name="streetName" required />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h4 class="form-label">Apt \ Suit / other <small>Optional</small></h4>
+                                <input type="text" class="form-control" id="" [(ngModel)]="registration.AptOrSuit"
+                                    name="AptOrSuit">
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-sm-6">
+                                    <h4 class="form-label ">Zip Code</h4>
+                                    <input type="text" class="form-control ml-4" [(ngModel)]="registration.zipCode"
+                                        name="zipCode" required />
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <h4 class="form-label">City</h4>
+                                    <input type="text" class="form-control" id="" [(ngModel)]="registration.sellerCity"
+                                        name="sellerCity" required />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h4 class="form-label">State</h4>
+                                <select class="form-select" aria-label="Default select example"
+                                    [(ngModel)]="registration.sellerState" name="sellerState" required>
+                                    <option selected>state</option>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="Arizona">Arizona</option>
+                                    <option value="Arkansas">Arkansas</option>
+                                    <option value="California">California</option>
+                                    <option value="Colorado">Colorado</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Delaware">Delaware</option>
+                                    <option value="District Of Columbia">District Of Columbia</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Idaho">Idaho</option>
+                                    <option value="Illinois">Illinois</option>
+                                    <option value="Indiana">Indiana</option>
+                                    <option value="Iowa">Iowa</option>
+                                    <option value="Kansas">Kansas</option>
+                                    <option value="Kentucky">Kentucky</option>
+                                    <option value="Louisiana">Louisiana</option>
+                                    <option value="Maine">Maine</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Massachusetts">Massachusetts</option>
+                                    <option value="Michigan">Michigan</option>
+                                    <option value="Minnesota">Minnesota</option>
+                                    <option value="Mississippi">Mississippi</option>
+                                    <option value="Missouri">Missouri</option>
+                                    <option value="Montana">Montana</option>
+                                    <option value="Nebraska">Nebraska</option>
+                                    <option value="Nevada">Nevada</option>
+                                    <option value="New Hampshire">New Hampshire</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="New Mexico">New Mexico</option>
+                                    <option value="New York">New York</option>
+                                    <option value="North Carolina">North Carolina</option>
+                                    <option value="North Dakota">North Dakota</option>
+                                    <option value="Ohio">Ohio</option>
+                                    <option value="Oklahoma">Oklahoma</option>
+                                    <option value="Oregon">Oregon</option>
+                                    <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Rhode Island">Rhode Island</option>
+                                    <option value="South Carolina">South Carolina</option>
+                                    <option value="South Dakota">South Dakota</option>
+                                    <option value="Tennessee">Tennessee</option>
+                                    <option value="Texas">Texas</option>
+                                    <option value="Utah">Utah</option>
+                                    <option value="Vermont">Vermont</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Washington">Washington</option>
+                                    <option value="West Virginia">West Virginia</option>
+                                    <option value="Wisconsin">Wisconsin</option>
+                                    <option value="Wyoming">Wyoming</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <h4 class="form-label">Phone Number</h4>
+                                <input type="text" class="form-control" id="" [(ngModel)]="registration.phoneNumber"
+                                    name="phoneNumber" required />
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div> -->
+                <div class="text-end my-5">
+                    <button type="button" class="btn btn-link text-decoration-none save-button" (click)="checkForm()"
+                        [disabled]="!getPaid.valid" mat-button matStepperNext> Save and
+                        continue
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step label="Set Up Billing">
+            <div class="set-billing mt-5">
+                <form #billing="ngForm">
+                    <h1 class="text-center">Set up billing </h1>
+                    <p class="text-center">Let us know you’d like to pay your Eat Delish.</p>
+                    <div class="set-billing-box row border">
+                        <h4>Add a credit</h4>
+                        <div class="row mt-5 mb-3">
+                            <div class="col-sm-6">
+                                <label for="" class="form-label">Card number</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" id="" class="form-control" aria-describedby="passwordHelpInline">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="" class="form-label">Expiration date</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <!-- <div class="mb-3 col-sm-6">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Choose a month </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6"> <select class="form-select" aria-label="Default select example">
+                                        <option selected>Choose a year </option>
+                                    </select></div> -->
+                                    <div class="col-sm-8">
+                                        <input type="month" class="form-control" name="expiryDate">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="cvv" class="form-label">CVV</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" maxlength="3"
+                                    aria-describedby="passwordHelpInline">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="" class="form-label">Name on card</label>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" id="" class="form-control" aria-describedby="passwordHelpInline">
+                            </div>
+                        </div>
+                        <h4 class="my-3">Billing address</h4>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Street address</label>
+                            <input type="text" class="form-control" id="" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Apt \ Suite \other
+                                <small>optional</small></label>
+                            <input type="text" class="form-control" id="" aria-describedby="emailHelp">
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-sm-6">
+                                <label for="" class="form-label ">Zip Code</label>
+                                <input type="text" class="form-control ml-4" id="" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3 col-sm-6">
+                                <label for="" class="form-label">City</label>
+                                <input type="text" class="form-control" id="" aria-describedby="emailHelp">
+                            </div>
+                            <div class="text-end my-5">
+                                <button type="button" class="btn btn-link text-decoration-none save-button"
+                                    routerLink="/profile"> Save
+                                    and continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+        </ng-template>
+        <!-- Icon overrides. -->
+        <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+        </ng-template>
+    </mat-stepper>
+
+</div>
+<app-footer></app-footer>

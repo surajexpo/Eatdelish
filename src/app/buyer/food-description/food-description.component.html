@@ -1,0 +1,380 @@
+<div class="container mt-5">
+    <div class="row">
+        <!-- food-images -->
+        <div class="col-sm-6">
+            <div class="row ">
+                <div class="col-md-9 order-md-2">
+                    <img src="{{foodDec12.photo}}" alt="" class="img-fluid w-100">
+                </div>
+                <div class=" col-md-3 d-flex flex-column mx-auto ">
+                    <div class="mt-2 mt-md-0">
+                        <img src="{{foodDec12.photo}}" alt="" class="img-fluid dish">
+                    </div>
+                    <div class="mt-2 mt-md-3  mx-md-0">
+                        <img src="{{foodDec12.photo}}" alt="" class="img-fluid dish">
+                    </div>
+                    <div class="mt-2 mt-md-3">
+                        <img src="{{foodDec12.photo}}" alt="" class="img-fluid dish">
+                    </div>
+                </div>
+            </div>
+            <!-- reviews -->
+            <div class="row mt-4">
+                <h2 class="m-0">Rate this Food Item</h2>
+                <!-- <div class="d-inline mb-3">
+                    <i class="fas fa-star fill-star"></i>
+                    <i class="far fa-star fill-star px-2"></i>
+                    <i class="far fa-star fill-star px-1"></i>
+                    <i class="far fa-star fill-star px-2"></i>
+                    <i class="far fa-star fill-star"></i>
+                </div> -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                            <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label fs-5 mb-2">Write Your Review</label>
+                    <textarea [(ngModel)]="review" class="form-control" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                </div>
+                <div class="text-end">
+                    <button class="btn button" (click)="addReview()">Submit</button>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <!-- 1 -->
+                <div>
+                    <!-- <div>
+                        <span class="review-title">25 Reviews</span>
+                        <div class="d-inline ms-2">
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="far fa-star fill-star"></i>
+                            <i class="far fa-star fill-star"></i>
+                        </div>
+                    </div> -->
+                    <div class="row mt-2">
+                        <!-- <div class="col-sm-6">
+                            <span class="review-category text-decoration-underline">Review for this item(3)</span>
+                        </div> -->
+                        <!-- <div class="col-sm-6 mt-3 mt-md-0">
+                            <span class="review-category text-dark">Review for this kitchen(25)</span>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="spinner-border" *ngIf="showSpinner" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="mt-4" *ngFor="let item of allReviews">
+                    <div class="row">
+                        <div class="col-auto">
+                            <img src="../../../assets/images/Danish.png" style="border-radius: 20px;" height="40px"
+                                width="40px" alt="" />
+                        </div>
+                        <div class="col-auto">
+                            <div>
+                                <h3>{{item.name}}<span class="date ms-3">{{item.date | date:
+                                        'dd/MM/yyyy'}}</span></h3>
+                                <div class="d-inline">
+                                    <i *ngFor="let data of counter(item.rating);let i = index"
+                                        class="fas fa-star fill-star"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <p class="review">{{item.comment}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 3rd -->
+                <!-- <div class="mt-4">
+                    <div class="row">
+                        <div class="col-auto">
+                            <img src="../../../assets/images/user2.png" alt="" />
+                        </div>
+                        <div class="col-auto">
+                            <div>
+                                <h3>Emma<span class="date ms-3">28/Aug/2021</span></h3>
+                                <div class="d-inline">
+                                    <i class="fas fa-star fill-star"></i>
+                                    <i class="fas fa-star fill-star"></i>
+                                    <i class="fas fa-star fill-star"></i>
+                                    <i class="fas fa-star fill-star"></i>
+                                    <i class="fas fa-star-half-alt fill-star"></i>
+                                </div>
+                            </div>
+                            <div class="">
+                                <p class="review">Love all the items this seller makes.<br>super tasty and fresh.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="col-sm-6 ">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="d-flex align-items-center">
+                        <h1 class="f-bold mt-3" [routerLink]="['/profilePage',foodDec12.uid]">{{foodDec12.sellerName}}
+                        </h1>
+                        <div class="d-inline ms-2">
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="fas fa-star fill-star"></i>
+                            <i class="far fa-star fill-star"></i>
+                            <i class="far fa-star fill-star"></i>
+                        </div>
+                    </div>
+
+                    <p class="mt-2">{{foodDec12.Name}}</p>
+                    <h4 class="fw-bold">US ${{foodDec12.price}}</h4>
+                </div>
+                <div class="col-sm-6 mt-3 mt-md-0">
+                    <button class="btn follow-button mt-2">Follow this kitchen</button>
+                </div>
+            </div>
+            <app-calender-buyer></app-calender-buyer>
+            <div class="row d-none">
+                <div class="d-flex flex-column cal-con">
+                    <!-- Date -->
+                    <div class="mt-4">
+                        <h4>Dish Availability : </h4>
+                        <div>
+                            <div class="row">
+                                <div class="col-4 ">
+                                    <p class="text-start mb-0 ml-2 ">Available Days</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-start mb-0">Time From</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-start mb-0">To</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.monday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Monday</label>
+                                </div>
+                                <div class="col-4 ">
+                                    <input type="time" class="form-control fs-6" value="{{foodDec12.mondayFrom}}"
+                                        name="mondayFrom" readonly />
+                                </div>
+                                <div class="col-4">
+                                    <input type="time" class="form-control fs-6" value="{{foodDec12.mondayTo}}"
+                                        name="mondayTo" readonly />
+                                </div>
+
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.tuesday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Tuesday</label>
+                                </div>
+                                <div class="col-4 ">
+                                    <input type="time" class="form-control fs-6" name="tuesdayFrom"
+                                        value="{{foodDec12.tuesdayFrom}}" readonly />
+                                </div>
+                                <div class="col-4">
+                                    <input type="time" class="form-control fs-6" name="tuesdayTo"
+                                        value="{{foodDec12.tuesdayTo}}" readonly />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.wednesday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto">Wednesday</label>
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" value="{{foodDec12.wednesdayFrom}}"
+                                        readonly />
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" value="{{foodDec12.wednesdayTo}}"
+                                        readonly />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.thursday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Thursday</label>
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" name="thursdayFrom" readonly
+                                        value="{{foodDec12.thursdayFrom}}" />
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" name="thursdayTo" readonly
+                                        value="{{foodDec12.thursdayTo}}" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.friday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Friday</label>
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" name="fridayFrom" readonly
+                                        value="{{foodDec12.fridayFrom}}" />
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" name="fridayTo" readonly
+                                        value="{{foodDec12.fridayTo}}" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.saturday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Saturday</label>
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" readonly
+                                        value="{{foodDec12.saturdayFrom}}" />
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" readonly
+                                        value="{{foodDec12.saturdayTo}}" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-4 d-flex align-items-center"
+                                    [style.background-color]="foodDec12.sunday=='' ? 'white': '#e9ecef'">
+
+                                    <label class="form-check-label  m-auto ">Sunday</label>
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" readonly
+                                        value="{{foodDec12.sundayFrom}}" />
+                                </div>
+                                <div class="col-4">
+
+                                    <input type="time" class="form-control  fs-6" readonly
+                                        value="{{foodDec12.sundayTo}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time -->
+                    <div class="mt-5">
+                        <h4>
+                            2. Select a Pick up Time
+                        </h4>
+                        <div class="d-flex flex-column ms-4 mt-3">
+                            <div class="">
+                                <button class="btn btn-sm btn-outline-dark px-2">7:00 a.m</button>
+                                <button class="btn btn-sm btn-outline-dark px-2 mx-4">7:30 a.m</button>
+                                <button class="btn btn-sm btn-outline-dark px-2">8:30 a.m</button>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-sm btn-outline-dark px-2">9:00 a.m</button>
+                                <button class="btn btn-sm btn-outline-dark px-1 mx-4">10:30 a.m</button>
+                                <button class="btn btn-sm btn-outline-dark px-1">11:30 a.m</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quantity -->
+                    <div class="mt-4 ">
+                        <h4 class="d-inline">
+                            <label for="quantity">3. Select Quantity</label>
+                        </h4>
+
+
+                        <input type="number" name="quantity" min="1" max="30" id="quantity" value="1"
+                            class="text-center mx-4">
+                    </div>
+                    <div class="mt-5">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn button px-5 ms-4" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Add to Basket
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content container">
+                                    <div class="modal-body my-3 text-dark">
+                                        <h6 class="">This product offers additional option and addons.
+                                        </h6>
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <h5>Options</h5>
+                                                <p class="desc">Lorem ipsum is simply a dummy text</p>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <span class="fw-bold">$1</span>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <input type="number" name="quantity" min="1" max="30"
+                                                    class="quantity text-center" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <h5>Options</h5>
+                                                <p class="desc">Lorem ipsum is simply a dummy text</p>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <span class="fw-bold">$1</span>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <input type="number" name="quantity" min="1" max="30"
+                                                    class="quantity text-center" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            <button data-bs-dismiss="modal" routerLink="/checkout" id="closeModal"
+                                                class="modal close" type="button" class="btn btn-sm button">Continue
+                                                to
+                                                Basket</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Desc -->
+                    <div class="mt-5">
+                        <h5>Description</h5>
+                        <p>{{foodDec12.discription}}</p>
+                    </div>
+                    <div class="mt-5">
+                        <h5>Approximate Location</h5>
+                        <img src="../../../assets/images/map.png" alt="" class="img-fluid mt-2">
+                    </div>
+                    <div class="mt-5">
+                        <h5>Food Allergy Information</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div>
+</div> -->

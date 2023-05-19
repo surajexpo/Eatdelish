@@ -1,0 +1,88 @@
+<div class="container  p-0">
+    <div class="row  p-0 m-0  ">
+        <div class="col-lg-6">
+            <div class="logo-container">
+                <a class="navbar-brand logo-container sign-up-2" routerLink="/"> <img
+                        src="../../../assets/images/image 12.png" class="logo mx-3">
+                </a>
+            </div>
+            <div id="step1">
+                <div class=" d-flex align-items-center flex-column h-75 mt-md-5">
+                    <h3 class="text-center fw-bold">Login</h3>
+                    <div class="text-center m-2">
+                        <button type="button" class="btn border m-3"><img src="../../../assets/images/fb-icon.png"
+                                class="circle-image"></button>
+                        <button type="button" class="btn border m-3"><img src="../../../assets/images/apple-icon.png"
+                                class="circle-image"></button>
+                        <button type="button" class="btn border m-3"><img src="../../../assets/images/google-icon.png"
+                                class="circle-image">
+                        </button>
+                    </div> <strong class="text-center mt-2">OR</strong>
+                    <div class="form__group field">
+
+                        <form #loginForm="ngForm">
+                            <input type="text" class="form__field " placeholder="Phone Number (Eg: +13870258231)" maxlength="14"
+                                [pattern]="mobNumberPattern" name="mobNumber" #mobNumber="ngModel" [(ngModel)]="phone"
+                                (keyup)="phoneMsg()" required />
+                            <div *ngIf="mobNumber.touched &&  !mobNumber.valid " [ngClass]="['error']">
+                                <div *ngIf="mobNumber.errors?.['pattern']">
+                                    <p class="text-danger">Mobile number not valid.</p>
+                                </div>
+                                <div *ngIf="mobNumber.errors?.required">
+                                    <p class="text-danger">mobile number is required</p>
+                                </div>
+                            </div>
+                            <h4 class="text-danger my-3">{{ msg }}</h4>
+                            <div id="sign-in-button" class="mt-4 mb-2"></div>
+                            <div *ngIf="reloadcaptcha">
+                                <h4 class="text-info mt-4 mb-2">Captcha is not reload please repfresh the page</h4>
+                                <img src="../../../assets/images/reload.png" (click)="reloadCurrentPage()">
+                            </div>
+                            <!-- <p class="text-danger">{{msg}}</p> -->
+                            <button type="button" class="btn btn-color mt-5"
+                                [disabled]="!loginForm.valid || checkcaptcha" (click)="login()">LOGIN</button>
+
+                            <p class="padding text-center">Don't have an account? <button class="sign-up-color"
+                                    routerLink="/seller/signup">SIGN UP</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="step2">
+                <div class="d-flex  align-items-center flex-column h-75 mt-md-5">
+                    <h3 class="text-center fw-bold">Enter OTP</h3>
+                    <div class="text-center m-2">
+                        <small>we' sent OTP to your phone number.</small>
+                    </div>
+                    <div class="form__group field">
+                        <form #ngform="ngForm">
+                            <input type="text" class="form__field" placeholder={{phone}} readonly />
+
+
+                            <input type="text" class="form__field" inputmode="numeric" autocomplete="one-time-code"
+                                pattern="\d{6}" placeholder="Enter 6 digit Otp" name="otpnum" #otpnum="ngModel" (keydown)="inputOtp()"
+                                id="otpnum" [(ngModel)]="otp" required />
+                            <div *ngIf="otpnum.touched && !otpnum.valid" [ngClass]="['error']">
+                                <div *ngIf="otpnum.errors?.['pattern']">
+                                    <p class="text-danger">OTP is not valid</p>
+                                </div>
+                                <div *ngIf="otpnum.errors?.required">
+                                    <p class="text-danger"> OTP is required</p>
+                                </div>
+                            </div>
+                            <p class="text-danger">{{otpMsg}}</p>
+                            <h4 class="text-center text-success mt-5">{{sendMsg }}</h4>
+
+                            <button type="button" class="btn btn-color mt-5" (click)="verifyOTP()"
+                                [disabled]="!ngform.valid">Verify OTP</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 p-0 m-0S">
+            <img class="img-responsive" src="../../../assets/images/signupbg1.png" alt="">
+        </div>
+    </div>
+</div>

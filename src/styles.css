@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+.cross-validation-error input {
+  border-left: 5px solid #a94442;
+}
+@media screen and (max-width: 768px) {
+  .mat-horizontal-stepper-header {
+    padding: 0 !important;
+  }
+  .mat-horizontal-content-container {
+    padding: 0 12px !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 80%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 70%;
+  }
+
+  button.nav-link.active.mx-4.notification.position-relative {
+    margin-left: 3rem !important;
+  }
+
+  button#dropdownMenuButton1 {
+    margin-left: 2.2rem !important;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  html {
+    font-size: 60%;
+  }
+
+  .work-col {
+
+    margin-left: -10px;
+  }
+
+  .img9 {
+    position: relative;
+    left: 14px;
+  }
+
+  .img9 img {
+    width: 65%;
+  }
+}
+
+
+@media screen and (max-width: 572px) {
+  html {
+    font-size: 60%;
+  }
+
+  
+
+  
+
+  
+}
+
+@media screen and (max-width: 414px) {
+  html {
+    font-size: 60%;
+  }
+
+  .work-col {
+    margin-left: -15px;
+  }
+
+} */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,352 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6 first-heading">
+
+            <h1 class="heading1 fw-bold color-new ">Home <span class="food">Food</span> From <br>
+                Your Friendly<br>
+                Neighborhood<br>
+                Chefs!
+
+            </h1>
+
+            <!-- <button class="btn btn-success py-3 fw-bold mt-4 mb-4">Sign up to Sell Your Delish Food</button> -->
+
+            <div class="input-group mt-7">
+                <input type="text" class="form-control rounded-start  py-3" [(ngModel)]="searchfoodValue"
+                    placeholder="Search Delish Food Around You" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" (input)="suggest()" (input)="validateField($event)">
+                <div class="form-control1 rounded-end ">
+                    <button class="btn btn-secondary1 my-2 fs-5 rounded-3 me-2 " type="button" id="button-addon2"
+                        (click)="closeBoxx(searchfoodValue)" [disabled]="disableSearchButton">Search</button>
+                </div>
+            </div>
+            <div class="suggestions" *ngIf="suggestions.length">
+                <select class="form-selects form-control" multiple aria-label="Default select example"
+                    (click)="closeBox($event)">
+                    <option *ngFor="let s of suggestions" value="{{s}}">{{s}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col-6 ">
+            <div class="img1 d-flex justify-content-center">
+                <img class="rounded-circle" src=" ../../../assets/images/Group 549.png" alt="">
+            </div>
+            <div class="img2 d-flex justify-content-end">
+                <img class="rounded-circle" src="../../../assets/images/Group 501.png" alt="">
+            </div>
+            <div class="img3 d-flex justify-content-end">
+                <img class="rounded-circle" src=" ../../../assets/images/Group 500.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="together">
+    <div class="img4 d-flex justify-content-end">
+        <img class src=" ../../../assets/images/Untitled-1 1.png" alt="">
+    </div>
+</div>
+<div class="container mt-3">
+    <h1 class="text-center  together-h1">Food is all about bringing people</h1>
+    <h1 class="text-center  mt-3 together-h1">together!</h1>
+    <div class="row ps-5 mt-5">
+
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Baked Goods')">
+                <img src=" ../../../assets/images/Group 503.png" alt="" width="100%">
+
+            </a>
+            <a routerLink="/search" class="food-img" (click)="foodtype('Baked Goods')">
+
+                <p class="mt-3 together-p text-center">Baked Goods </p>
+            </a>
+        </div>
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Breakfast')">
+                <img src=" ../../../assets/images/Group 504.png" alt="" width="100%">
+                <p class="mt-3 together-p text-center">Breakfast</p>
+            </a>
+        </div>
+
+
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Brunch')">
+                <img src=" ../../../assets/images/Group 505.png" alt="" width="100%">
+                <p class="mt-3 together-p text-center">Brunch</p>
+
+            </a>
+        </div>
+
+
+    </div>
+    <div class="row ps-5 mt-5">
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Lunch')">
+                <img src=" ../../../assets/images/Group 685.png" alt="" width="100%">
+                <p class="mt-3 mb-0 together-p text-center">Lunch</p>
+
+            </a>
+        </div>
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Snacks')">
+                <img src=" ../../../assets/images/Group 510.png" alt="" width="100%">
+                <p class="mt-3 mb-0 together-p text-center">Snacks</p>
+
+            </a>
+        </div>
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a routerLink="/search" class="food-img" (click)="foodtype('Dinner')">
+                <img src=" ../../../assets/images/Group 506.png" alt="" width="100%">
+                <p class="mt-3 together-p text-center">Dinner</p>
+
+            </a>
+        </div>
+    </div>
+    <!-- <div class="row ps-5 mt-5">
+        <div class="col-4 d-flex align-items-center flex-column">
+            <a  routerLink="/search" class="food-img">
+                <img src=" ../../../assets/images/Group 509.png" alt="" width="100%">
+                <p class="mt-3 mb-0 together-p text-center others">Other</p>
+
+            </a>
+        </div>
+    </div> -->
+</div>
+<div class="together">
+    <div class="img5 d-flex justify-content-start">
+        <img class src=" ../../../assets/images/Untitled-1 2.png" alt="">
+    </div>
+</div>
+<div class="work">
+    <h1 class="text-center together-h1">How it Works</h1>
+</div>
+
+<div class="container-fluid mt-5 p-0 ">
+    <div class="bg-image">
+        <div class="container mt-5 work-col ps-6 pb-5">
+            <div class="row ">
+                <div class="col-md-3 d-flex justify-content-md-end justify-content-center">
+                    <div class="img7">
+                        <img src=" ../../../assets/images/et1.png" alt="">
+
+                    </div>
+                </div>
+                <div class="col-md-9 mt-md-0 mt-4 d-flex flex-column justify-content-center">
+                    <h4 class="work-h4">Earn money by cooking what you love</h4>
+                    <p class="work-p">Neighborhood chefs share your passion for food on your own terms</p>
+                    <p class="work-p">Find customers. Build your dream restaurant, without any upfront costs.</p>
+                </div>
+            </div>
+            <div class="row mt-md-0 mt-4">
+                <div class="col-md-6 order-md-1 order-2 d-flex flex-column justify-content-center">
+                    <h4 class="work-h4 ">Unforgettable, immersive culinary experiences</h4>
+                    <p class="work-p"> Experience tasty food, while supporting passionate neighborhood chefs.</p>
+                    <p class="work-p">Find items like homemade pretzels or a chocolate making workshop or an
+                        authentic</p>
+                    <p class="work-p">Indian dinner experience. Pay with your credit card securely and directly.</p>
+                </div>
+                <div
+                    class="col-md-4 order-md-2 mt-md-0 mt-4 order-1 d-flex justify-content-md-start justify-content-center">
+                    <div class="img8">
+                        <img src=" ../../../assets/images/et2.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid  p-0">
+    <div class="row ">
+        <div class="col-md-6 get-app p-0">
+            <div class="ps-5 pt-3">
+                <h1 class=" together-h1 mt-2">Get the App</h1>
+                <!-- <h1 class="Chefs together-h1">App</h1> -->
+                <p class="get-p mt-5">We will send you a link, open it on your</p>
+                <p class="get-p ">phone to download the app</p>
+
+                <div class="d-flex  mt-7">
+                    <div class="form-check ">
+                        <input class="form-check-input " type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Email
+                        </label>
+                    </div>
+                    <div class="form-check ms-4 ps-4">
+                        <input class="form-check-input ms-5" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label ps-2" for="flexRadioDefault2">
+                            Phone
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group mt-4">
+                    <input type="text" class="form-control rounded-start  py-3 ps-5" placeholder="Email"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="form-control1 rounded-end ">
+                        <button class="btn btn-secondary1 my-2 fs-5 rounded-3 me-2 " type="button"
+                            id="button-addon2">Share App Link</button>
+                    </div>
+                </div>
+                <p class="dawnload-link mt-4 mb-4">Download app from</p>
+                <!-- //////////play store button/////////////////////////// -->
+                <a href="#" class="dawnload-btn " style="border:none;text-decoration:none"><img
+                        src=" ../../../assets/images/image 47.png"></a>
+                <a href="#" class="dawnload-btn ps-6" style="border:none;text-decoration:none"><img
+                        src=" ../../../assets/images/image 48.png"></a>
+            </div>
+        </div>
+        <div class="col-md-6 p-0 d-flex align-items-center pt-3">
+            <div class="img9 ">
+                <img src=" ../../../assets/images/Group 1122.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    <p class="text-center together-p">"If you really want to make a friend, go to someone's house and eat with
+        him...the people who </p>
+    <p class="text-center together-p mt-2">give you their food give you their heart."</p>
+    <div class="d-flex justify-content-center mt-5">
+        <img src=" ../../../assets/images/food heart 1.png" alt="">
+    </div>
+</div>
+<div class="container bg-light345">
+    <div class="row pt-4">
+        <div class="col-2 d-flex align-items-end ">
+            <img class="plate-red1 hide-md" src=" ../../../assets/images/plate red 22.png" alt="">
+        </div>
+        <div class="col-md-8">
+            <p class="text-center color-new fs-3 fw-bold">Question</p>
+            <p class="text-center together-p fs-2 fw-bold">Frequently Asked Questions </p>
+            <div class="accordion-item ms-auto me-auto border-bottom pb-4 mt-7">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <i class="far fa-plus-circle color-new ms-auto "></i>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                        collapse
+                        plugin adds the appropriate classes that we use to style each element. These classes control
+                        the
+                        overall appearance, as well as the showing and hiding via CSS transitions. You can modify
+                        any of
+                        this with custom CSS or overriding our default variables. It's also worth noting that just
+                        about any
+                        HTML can go within the <code>.accordion-body</code>, though the transition does limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item ms-auto me-auto border-bottom pb-4 mt-2">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <i class="far fa-plus-circle color-new ms-auto "></i>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                        the
+                        collapse plugin adds the appropriate classes that we use to style each element. These
+                        classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                        can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth
+                        noting that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item ms-auto me-auto border-bottom pb-4 mt-2">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <i class="far fa-plus-circle color-new ms-auto "></i>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These
+                        classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                        can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth
+                        noting that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item ms-auto me-auto  pb-5 mt-2">
+                <h2 class="accordion-header" id="panelsStayOpen-headingfour">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapsefour">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <i class="far fa-plus-circle color-new ms-auto "></i>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingfour">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These
+                        classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You
+                        can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth
+                        noting that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 d-flex align-items-start justify-content-end">
+            <img class="plate-red hide-md" src=" ../../../assets/images/plate red 21.png" alt="">
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+<div class="container mt-7 ">
+    <div class="search d-flex justify-content-center align-items-center ">
+        <div class="input-group my-12">
+            <input type="text" class="form-control rounded-start  py-3 ps-5" placeholder="Enter Your Email"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="form-control1 rounded-end ">
+                <button class="btn btn-secondary1 my-2 fs-5 rounded-3 me-2 " type="button"
+                    id="button-addon2">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</div>

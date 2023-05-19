@@ -1,0 +1,167 @@
+body {
+    overflow-x: hidden;
+}
+
+
+
+html {
+    font-size: 99%;
+}
+
+h1, h4, h5, h6, h2, h3, button, a, p, label {
+    font-family: 'Montserrat' important;
+    font-style: normal;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+button:focus {
+    box-shadow: none !important;
+}
+.logo{
+    width: 15% !important;
+}
+.food {
+    color: #55B02D;
+}
+
+.Chefs {
+    color: #F54748;
+}
+
+.bg-light12 {
+    background-color: rgba(255, 0, 0, 0.04);
+    border-radius: 20px;
+}
+
+.item {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #000000;
+}
+
+.img-width {}
+
+.img-width img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.p-500 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.p-price {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #000000;
+}
+
+.p-shadow {
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: #868686;
+    line-height: 2rem;
+}
+
+.p-shadow-22 {
+    font-weight: normal;
+    font-size: 1.4rem;
+    color: #868686;
+    line-height: 2rem;
+}
+
+.p-name {
+    font-weight: bold;
+    font-size: 1.9rem;
+    color: #000000;
+    line-height: 4rem;
+}
+
+.p-600 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #000000;
+    line-height: 6rem;
+}
+
+.p-shadow-24 {
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: #868686;
+    line-height: 2rem;
+}
+
+.p-22 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #000000;
+    line-height: 3rem;
+}
+
+.continue-bro {
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: #023047;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 80%;
+    }
+
+
+}
+
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 762px) {
+    html {
+        font-size: 55%;
+    }
+    .logo {
+        width: 11% !important;
+    }
+}
+
+@media screen and (max-width: 626px) {
+    html {
+        font-size: 45%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    html {
+        font-size: 40%;
+    }
+    .logo {
+        width: 15% !important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    html {
+        font-size: 35%;
+    }
+
+    .work-col {
+        margin-left: -15px;
+    }
+
+}
+
+@media screen and (max-width: 376px) {
+    html {
+        font-size: 40%;
+    }
+}
+

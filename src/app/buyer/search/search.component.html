@@ -1,0 +1,315 @@
+<div class="container-fluid p-0 bg-search1">
+    <div class="container py-4">
+        <div class="input-group mt-7 ms-5">
+            <input type="text" id='inputFood' class="form-control rounded-start  py-3" [(ngModel)]="searchfoodValue"
+                placeholder="Enter zip-code or food-name" aria-label="Recipient's username"
+                aria-describedby="button-addon2" (input)="suggest()">
+            <div class="form-control1 rounded-end ">
+                <button class="btn btn-secondary1 my-2 fs-5 rounded-3 me-2 " type="button" id="button-addon2"
+                    (click)="searchTypeOfFood()">Search</button>
+            </div>
+        </div>
+        <div class="spinner-border" role="status" *ngIf="showSpinner">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="suggestions" *ngIf="suggestions.length">
+            <select class="form-selects form-control" multiple (click)="selectCountry($event)"
+                aria-label="Default select example">
+                <option *ngFor="let s of suggestions" value="{{s}}">{{s}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-between flex-row border-bottom mt-5">
+        <div class="col-md-5">
+            <h3 class="search-h3">{{foods.length}} search results <button class="btn btn-basic"
+                    style="background-color: #dc3545;color: #ffffff;" (click)="resetFilter()">Reset</button></h3>
+        </div>
+        <div class="col-md-7 mt-md-0 mt-3 d-flex justify-content-end ">
+            <div class="dropdown">
+                <button class="dropbtn">Category</button>
+                <div class="dropdown-content">
+                    <a (click)="sortDataByCategory('Breakfast')">Breakfast</a>
+                    <a (click)="sortDataByCategory('Lunch')">Lunch</a>
+                    <a (click)="sortDataByCategory('Dinner')">Dinner</a>
+                </div>
+            </div>
+            <!-- <p class="pe-4 search-2-p">Pickup time</p> -->
+            <!-- <button class="dropbtn">Rating</button> -->
+            <button (click)="sortDataByLowToHighPrice()" class="dropbtn">Low To High </button>
+            <button (click)="sortDataByHighToLowPrice()" class="dropbtn">High To Low</button>
+            <i class="fas fa-sort-alt Chefs search-2-i  pt-2"></i>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div *ngIf="foods.length === 0" class="alert alert-warning" role="alert">
+        No Dishes Available!
+    </div>
+    <div class="row pt-5">
+        <div class="col-12 row ">
+            <div class="col-md-3 mt-sm-0 mt-4 p-0 d-flex justify-content-center"
+                *ngFor="let food of foods; let i = index">
+                <div class="card border-0 cursor">
+                    <div class="AddToCart">
+                        <img src="{{food.photo}}" class="card-img-top " alt="...">
+                        <div class="overlay" [routerLink]="['/foodDescription',food.id]"></div>
+                        <button class="btn button-addToCart" (click)="addTocart(i)">Add to cart</button>
+                    </div>
+                    <div class="card-body p-0 mt-3" (click)="foodIndex(i)" [routerLink]="['/foodDescription',food.id]">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">{{food.Name}}</h4>
+                            <div>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">{{food.RatingNumber}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">{{food.shopAddress}}</p>
+                            <p class="card-price pe-3">${{food.price}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button (click)="pagination()">Next</button>
+            <!-- <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" >
+                <div class="card border-0 cursor">
+                    <div class="AddToCart">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top "
+                        routerLink="/foodDescription" alt="...">
+                        <div class="overlay"></div>
+                        <button class="btn button-addToCart">Add to cart</button>
+                    </div>
+                    <div class="card-body p-0 mt-3" routerLink="/foodDescription">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-6 row ">
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0  d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-7 sm-pt-0">
+        <div class="col-lg-6 row ">
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0  d-flex justify-content-center " routerLink="/foodDescription">
+                <div class="card border-0 d-flex justify-content-center">
+                    <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 row ">
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-7 sm-pt-0">
+        <div class="col-md-6 row ">
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0  d-flex justify-content-center " routerLink="/foodDescription">
+                <div class="card border-0 d-flex justify-content-center">
+                    <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 row ">
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 mt-sm-0 mt-4 p-0 d-flex justify-content-center" routerLink="/foodDescription">
+                <div class="card border-0">
+                    <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                            <div class="d-flex card-rating px-2  align-items-center">
+                                <i class="fas fa-star"></i>
+                                <p class="m-0 ps-2 card-rating">4.2</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2 justify-content-between">
+                            <p class="card-p">Mesa, AZ 85205, USA</p>
+                            <p class="card-price pe-3">$12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        </div>

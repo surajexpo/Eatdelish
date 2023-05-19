@@ -1,0 +1,282 @@
+/* ///////////////////////////////////footer/////////////////// */
+
+/* h1,
+h4,
+button,
+a,
+p,
+label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+} */
+h1,
+h4,
+h3,
+h5,
+h6,
+h2,
+button,
+a,
+p,
+label,
+div {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+}
+.image-buttons {
+    margin-top: 5%;
+    text-align: center;
+}
+.btn-danger {
+    margin-right: 5px;
+    border-radius: 15px;
+}
+.btn-success {
+    border-radius: 15px;
+}
+.profile {
+    position: relative;
+    text-align: center;
+}
+.modal-header h5 {
+    font-size: 28px;
+    font-weight: 600;
+}
+.profile input {
+    cursor: pointer;
+}
+.icon i {
+    position: absolute;
+    font-size: 30px;
+    left: 55%;
+    bottom: 10px;
+}
+.icon input[type="file"] {
+    font-size: 1px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    left: 255px;
+    top: 79px;
+}
+.navbar-nav {
+    width: 90%;
+    padding-top: 40px;
+}
+a {
+    color: rgba(0, 0, 0, 1) !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.ps-7 {
+    padding-left: 4rem !important;
+}
+
+.logo {
+    width: 65%;
+    margin-top: -44px;
+}
+
+/* .dropdown-toggle::after{
+    border: none !important;
+} */
+
+.navbar-brand img{
+    width: 100%;
+    max-width: 8em;
+    height: auto;
+}
+.btn-secondary12 {
+    background: #219ebc !important;
+    color: white !important;
+    margin-left: -127px !important;
+    font-weight: 500 !important;
+}
+.modal-body .button {
+    background-color: #023047;
+    color: #fff;
+    font-size: calc(100%+1vh+1vw);
+}
+.px-8 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+}
+
+.bg-light12 {
+    background-color: rgba(255, 183, 3, 0.27);
+}
+
+.footer-p {
+    font-size: 0.8rem;
+}
+
+.footer-link {
+    background-color: #023047;
+    color: white;
+}
+
+.facebook-link {
+    color: #023047 !important;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.footer-p12 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 3rem;
+}
+
+.pt-6 {
+    padding-top: 5rem !important;
+}
+
+.bg-success1 {
+    background: #219ebc;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.together-p {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.mt-7 {
+    margin-top: 3.5rem;
+}
+
+/* ///////////////////////////////////footer/////////////////// */
+
+/* h1,
+h4,
+button,
+a,
+p,
+label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+} */
+
+.nav-item button {
+    background: white !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    border: 0px !important;
+    padding: 0 1rem;
+}
+
+nav a {
+    font-weight: 500 !important;
+    font-size: 1.3rem;
+}
+
+.dropdown-menu {
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 6px !important;
+    left: -203px !important;
+}
+.user-dropdown {
+    left: 0 !important;
+}
+
+.dropdown-item {
+    display: block;
+    width: 94% !important;
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    color: white !important;
+    cursor: pointer;
+    background-color: #edcc4a !important;
+}
+.dropdown img {
+    width: 10%;
+    background-color: #fff;
+}
+.notification {
+    background-color: white !important;
+    color: rgba(0, 0, 0, 0.9) !important;
+    border: 0px !important;
+    box-shadow: none !important;
+    font-size: 1.3rem;
+    font-weight: 500 !important;
+}
+
+.logo-name {
+    font-family: cambria !important;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 28px;
+    color: #023047;
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 80%;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 762px) {
+    html {
+        font-size: 55%;
+    }
+
+    .footer-p {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+    }
+
+    .col-md-8.row {
+        margin-top: 2rem;
+    }
+
+    .bg-success1 {
+        font-size: 1.12rem;
+    }
+}
+
+@media screen and (max-width: 626px) {
+    html {
+        font-size: 45%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    html {
+        font-size: 40%;
+    }
+
+    a.navbar-brand.d-flex.mt-2 {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    html {
+        font-size: 35%;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    html {
+        font-size: 40%;
+    }
+}

@@ -1,0 +1,164 @@
+h1, h4, h3, h5, h6, h2, button, a, p, label, div {
+    font-family: 'Montserrat' !important;
+    font-style: normal;
+}
+
+.back-size {
+    font-size: 20px;
+    color: black;
+
+}
+.logo-width{
+    width: 14%;
+}
+
+.para-1 {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.bod-1 {
+    border-radius: 22px;
+
+}
+
+.colr {
+    color: #ACAAAA;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.icon {
+    position: absolute;
+    right: 0px;
+    padding: 11px;
+    color: #000000;
+    margin-top: 7px;
+}
+
+.d-flex {
+    display: flex !important;
+    flex-wrap: nowrap;
+}
+
+.search {
+    margin-left: 20%;
+}
+
+.serh {
+    border-radius: 12px;
+    margin-left: 4%;
+    border: 1px solid #023047;
+    width: 400px;
+    height: 43px;
+}
+
+.srch {
+    display: flex;
+    align-self: center;
+    margin-right: 10px;
+
+
+}
+
+.form-search:focus {
+    outline: none;
+}
+
+.form-search {
+    border-radius: 12px;
+}
+
+.colr-1 {
+
+
+    background: rgba(255, 183, 3, 0.15);
+}
+
+.txt-1 {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.img-1 {
+    width: 74px;
+}
+
+
+
+
+.bord-rad {
+    border-radius: 21px 21px 0px 21px;
+    background-color: rgba(255, 183, 3, 0.52);
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+
+}
+
+.bord-rad1 {
+    border-radius: 21px 21px 0px 21px;
+    background: rgba(2, 48, 71, 0.25);
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+
+}
+
+.time {
+    font-weight: 600;
+    font-size: 15px;
+    color: #666666;
+}
+
+.plus-button {
+    color: white;
+    background-color: #000000;
+    border-radius: 100px;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.fa-size {
+    font-size: 22px;
+}
+
+.send-btn {
+    background-color: #023047;
+    border-radius: 30px;
+    width: 25%;
+    height: 40px;
+    color: white;
+
+}
+
+.send-btn:hover {
+    color: white;
+}
+
+.footr {
+    background: rgba(2, 48, 71, 0.14);
+}
+
+.chat-msg {
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #A2A2A2;
+    height: 40px;
+    width: 270px;
+
+
+}
+
+.chat-msg:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.img-11 {
+    border-radius: 100px;
+    width: 74px;
+}

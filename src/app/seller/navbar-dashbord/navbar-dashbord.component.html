@@ -1,0 +1,85 @@
+<nav>
+    <div class="container-fluid pt-2  p-0 bg-body">
+        <div class="row w-100">
+            <div class="col-8 ">
+                <div class="d-flex logos12 ps-4">
+                    <img class="logo-width" routerLink="" src="../../../assets/images/image 12.png" alt="">
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex justify-content-end">
+                    <div>
+                        <div class="dropdown float-end me-4">
+                            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="../../../assets/images/111.png" alt="" class="profile-img1 ">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" routerLink="/profile"><i
+                                            class="fas fa-user me-2"></i>Profile</a>
+                                </li>
+                                <li><a class="dropdown-item" routerLink="/dashboard"><i
+                                            class="fal fa-tv me-2"></i>Dashboard</a>
+                                </li>
+                                <li><a class="dropdown-item" routerLink="/chat"><i
+                                            class="fas fa-envelope-open-text me-2"></i>Message</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fal fa-sign-out me-2"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</nav>
+
+<div class="container-fluid bg-body ">
+    <div class="row ">
+        <div [ngClass]="showSideBar  ? 'col-2' : 'col-s1'" class=" pt-4 px-0">
+            <div class="sticky">
+                <div class="mb-5 fs-5 ms-3 cursor" (click)="sidebar()"><i *ngIf="!showSideBar"
+                        class="fas fa-angle-double-right"></i><i *ngIf="showSideBar"
+                        class="fas fa-angle-double-left"></i></div>
+
+                <div class="d-flex  cursor loginInfo1 px-3 py-2 " routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard">
+                    <i class="fas fa-lock mt-1 fs-5"></i>
+                    <p class="ps-2 mb-0 dashbord-title" *ngIf="showSideBar">Login
+                        Information</p>
+                </div>
+                <div class="d-flex mt-4 py-2 cursor menu px-3 " routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" routerLink="Menu">
+                    <i class="fas fa-bars mt-1 fs-5"></i>
+                    <p class="ps-2 mb-0 dashbord-title" *ngIf="showSideBar">MENU</p>
+                </div>
+                <div class="d-flex mt-4 py-2 cursor Orders px-3" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" routerLink="Order">
+                    <i class="fal fa-cart-arrow-down mt-1 fs-5"></i>
+                    <p class="ps-2 mb-0 dashbord-title" *ngIf="showSideBar">Order</p>
+                </div>
+                <div class="d-flex mt-4 py-2 cursor paymentS px-3" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" routerLink="Payments">
+                    <i class="fas fa-usd-circle mt-1 fs-5"></i>
+                    <p class="ps-2 mb-0 dashbord-title" *ngIf="showSideBar">paymentS</p>
+                </div>
+                <div class="d-flex mt-4 py-2 cursor Payout px-3" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" routerLink="payout">
+                    <i class="fas fa-money-check mt-1 fs-5"></i>
+                    <p class="ps-2 mb-0 dashbord-title" *ngIf="showSideBar">Payout</p>
+                </div>
+            </div>
+
+        </div>
+        <div [ngClass]="showSideBar  ? 'col-10' : 'col-s10'" class=" px-0">
+            <router-outlet></router-outlet>
+        </div>
+
+
+    </div>
+</div>

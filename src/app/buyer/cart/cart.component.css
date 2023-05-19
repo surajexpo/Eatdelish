@@ -1,0 +1,17 @@
+.food_img img{
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    border-radius: 4px;
+    margin: 10px;
+}
+.food_img select{
+    max-width: 100px;
+}
+.food_desc{
+    padding: 10px;
+}
+.button{
+    color: #fff;
+    background-color: #023047;
+}

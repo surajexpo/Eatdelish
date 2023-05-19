@@ -1,0 +1,538 @@
+<!-- <nav>
+    <div class="container mt-2  p-0">
+        <div class="row">
+            <div class="col-8">
+                <div class="d-flex logos12">
+                    <img class="logo-width" src="../../../assets/images/logo.png" alt="">
+                    <p class="align-self-end mb-0 ms-sm-3 ms-2 logo-name">Eat Delish</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex justify-content-end">
+                    <div>
+                        <div class="dropdown float-end me-4">
+                            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="../../../assets/images/111.png" alt="" class="profile-img1 ">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/dashbord/dashbord.html"><i
+                                            class="fal fa-tv me-2"></i>Dashboard</a>
+                                </li>
+                                <li><a class="dropdown-item" href="./message.html"><i
+                                            class="fas fa-envelope-open-text me-2"></i>Message</a></li>
+                                <li><a class="dropdown-item" href="/Sign-Up2/sign-up1.html"><i
+                                            class="fal fa-sign-out me-2"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</nav> -->
+<app-navbar2></app-navbar2>
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-0 mt-2 profile">
+            <img class="img1" src={{coverImage}} alt="">
+            <div class="profile1">
+                <img src={{image}} alt="" class="">
+            </div>
+            <div class="icon text-center">
+                <input type="file" (change)="onImageSelect($event)">
+                <i class="fas fa-camera"></i>
+            </div>
+            <div class="edit_cover">
+                <input type="file" (change)="onCoverSelect($event)">
+                <button class="btn button"><i class="fas fa-pencil-alt pe-2"></i>Edit cover Photo</button>
+            </div>
+            <div class="image-buttons" *ngIf="uploadButton">
+                <button type="button" class="btn-danger border-0" (click)="cancelPhoto()">Cancel</button>
+                <button type="button" class="btn-success border-0" (click)="uploadData('PhotoModal')">Upload</button>
+            </div>
+            <div class="cover-image" *ngIf="uploadCover">
+                <button type="button" class="btn-danger border-0" (click)="cancelCoverPhoto()">Cancel</button>
+                <button type="button" class="btn-success border-0"
+                    (click)="uploadCoverPhoto('PhotoModal')">Upload</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-5 ps-0 mt-5 addres">
+
+            <h3 class="profile-h3 mt-4 ">{{kitchenInfo.firstName}} {{kitchenInfo.lastName}}</h3>
+            <p class="profile-p mt-sm-3 mb-0 ">{{kitchenInfo.kitchenName}}<br>
+                at {{kitchenInfo.houseNumber}} <br>
+                {{kitchenInfo.kitchenArea}}, near {{kitchenInfo.landMark}}, <br>
+                {{kitchenInfo.townCity}}, {{kitchenInfo.countryState}}, <br>
+                United States</p>
+            <!--   
+            <p *ngIf="!aboutTrue" class="profile-p mt-sm-3 mb-0 ">{{about}}</p>
+            <textarea *ngIf="aboutTrue" [(ngModel)]="about" class="about-textarea mt-sm-5 mt-2" name="about" rows="6"
+                placeholder="SAY ABOUT SOMETHING ABOUT THIS"></textarea> -->
+            <!-- <button (click)="editAbout() "class="btn button" >Edit About Kitchen</button> -->
+            <!-- Button trigger modal -->
+            <br>
+            <p>{{kitchenInfo.kitchenDesc}}</p>
+            <button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Edit About Kitchen
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog .modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Kitchen Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="kitchenName" class="form-label">Kitchen Name</label>
+                                    <input type="text" class="form-control" id="kitchenName"
+                                        aria-describedby="KitchenHelp" placeholder={{kitchenInfo.kitchenName}}
+                                        [(ngModel)]="updateKitchenUpdate.kitchenName" name=kitchenName>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Flat" class="form-label">Flat/House
+                                        No./Building/Apartment</label>
+                                    <input type="text" class="form-control" id="flat"
+                                        placeholder={{kitchenInfo.houseNumber}}
+                                        [(ngModel)]="updateKitchenUpdate.kitchenNumber" name=kitchenNumber>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label for="area" class="form-label">Area/Colony/Street/Village</label>
+                                            <input type="text" class="form-control" id="area"
+                                                placeholder={{kitchenInfo.kitchenArea}}
+                                                [(ngModel)]="updateKitchenUpdate.kitchenArea" name=kitchenArea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="landmark" class="form-label">Landmark</label>
+                                            <input type="text" class="form-control" id="landmark"
+                                                placeholder={{kitchenInfo.landMark}}
+                                                [(ngModel)]="updateKitchenUpdate.kitchenLandmark" name=kitchenLandmark>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label for="state" class="form-label">State/Province/Region</label>
+                                            <input type="text" class="form-control" id="area"
+                                                placeholder={{kitchenInfo.countryState}}
+                                                [(ngModel)]="updateKitchenUpdate.kitchenState" name=kitchenState>
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="city" class="form-label">Town/City</label>
+                                            <input type="text" class="form-control" id='area'
+                                                placeholder={{kitchenInfo.townCity}}
+                                                [(ngModel)]="updateKitchenUpdate.kitchenCity" name=kitchenCity>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="floatingTextarea">Add short description about your
+                                        Kitchen</label>
+                                    <textarea class="form-control" id="floatingTextarea" style="height: 100px"
+                                        placeholder={{kitchenInfo.kitchenDesc}}
+                                        [(ngModel)]="updateKitchenUpdate.kitchenDesc" name=kitchenDesc></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-lg button"
+                                        (click)="submitUpdate()">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 mt-5">
+            <div class="row mt-3 justify-content-end">
+                <div class="col-4 p-sm-0 " *ngIf="kitchenInfo.verified">
+                    <div class="d-flex justify-content-center">
+                        <img src="../../../assets/images/verified.png" alt="" width="15%">
+                    </div>
+                    <p class="post-text text-center upp text-uppercase">Verified Kitchen</p>
+
+                </div>
+                <div class="col-4  p-sm-0 ">
+                    <p class="post-number  text-center">{{kitchenInfo.following}}</p>
+                    <p class="post-text text-center">FOLLOWING</p>
+                </div>
+                <div class="col-4 ">
+                    <p class="post-number text-center">{{kitchenInfo.followers}}</p>
+                    <p class="post-text text-center">FOLLOWERS</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-flex  border-bottom mt-4">
+        <p class="food ms-1 mb-0" (click)="foodShow()">Food</p>
+        <p class="food12  mb-0" (click)="ratingReview()">Rating & Review</p>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+        <a class="veiw-more" (click)="viewMore()">view more</a>
+    </div>
+
+</div>
+<!-- ///////////////////////////////////////////// gallery/////////////////////// -->
+
+<div class="gallery">
+
+    <div class="container container12 mt-sm-5 mb-5" *ngFor="let photo of photoDisplay">
+        <a href="" data-lightbox="homePortfolio">
+            <img src={{photo}} />
+        </a>
+    </div>
+</div>
+<!-- ///////////////////////////////////////////// gallery end/////////////////////// -->
+<div class="gallery112">
+    <div class="container ">
+        <div class="row pt-5">
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6 p-0  d-flex justify-content-center " onclick="location.href='food_Desc.html'">
+                    <div class="card border-0 d-flex justify-content-center">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-7">
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 p-0  d-flex justify-content-center " onclick="location.href='food_Desc.html'">
+                    <div class="card border-0 d-flex justify-content-center">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-7">
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 p-0  d-flex justify-content-center " onclick="location.href='food_Desc.html'">
+                    <div class="card border-0 d-flex justify-content-center">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 row ">
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src=" ../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 p-0 d-flex justify-content-center" onclick="location.href='food_Desc.html'">
+                    <div class="card border-0">
+                        <img src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body p-0 mt-3">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-h4 align-self-center mb-0">Lorem ipsum</h4>
+                                <div class="d-flex card-rating px-2  align-items-center">
+                                    <i class="fas fa-star"></i>
+                                    <p class="m-0 ps-2 card-rating">4.2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <p class="card-p">Mesa, AZ 85205, USA</p>
+                                <p class="card-price pe-3">$12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ////////////////////////////////////Rating & Review////////////////////////////// -->
+<div class="RatingReview mt-1">
+    <div class="container">
+        <div class="mt-sm-5 mt-2">
+            <div class="row">
+                <div class="col12 p-sm-0 ps-2 d-flex">
+                    <div>
+                        <img class=" rounded-circle" src="../../../assets/images/Ellipse 71.png" alt="">
+                    </div>
+                    <div class="ms-4">
+                        <p class="review-name mb-2 text-center">Jackson</p>
+                        <div class="d-flex justify-content-start stars12">
+                            <i class="fas fa-star gold"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <p class="review-date mt-4">28 Aug 2021</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-5 mt-2">
+                <div class="col-md-8">
+                    <p class="review12">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem
+                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                        printer took
+                        a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+
+                    <img class="reviewImg" src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" alt="">
+
+                </div>
+            </div>
+        </div>
+        <div class="mt-sm-5 mt-4">
+            <div class="row">
+
+                <div class="col12 p-sm-0 ps-2 d-flex">
+                    <div>
+                        <img class=" rounded-circle" src="../../../assets/images/Ellipse 71.png" alt="">
+                    </div>
+                    <div class="ms-4">
+                        <p class="review-name mb-2 text-center">Jackson</p>
+                        <div class="d-flex justify-content-start stars12">
+                            <i class="fas fa-star gold"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                            <i class="fas fa-star gold ms-1"></i>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <p class="review-date mt-4">28 Aug 2021</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-5 mt-2">
+                <div class="col-md-8">
+                    <p class="review12">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem
+                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                        printer took
+                        a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+
+                    <img class="reviewImg" src="../../../assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" alt="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,365 @@
+/* registration css  */
+#step2 {
+  display: none;
+}
+.day-container {
+  height: 600px;
+  overflow-x: hidden;
+  padding: 2rem;
+}
+.modal-width {
+  max-width: 900px !important;
+}
+.modal-width #foodName {
+  text-transform: lowercase;
+}
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#availableShow {
+  display: none;
+}
+.check-input {
+  outline: none;
+}
+.save-button {
+  color: white;
+  background-color: #000000;
+}
+p,
+label,
+select,
+input,
+h {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+}
+.choose-font {
+  font-size: 24px;
+  line-height: 29px;
+  color: #6a6a6a;
+}
+.link-para {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+h {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+}
+.logo-container h3 {
+  color: #023047;
+  font-family: Cambria;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+}
+.logo {
+  max-width: 11%;
+  min-width: 110px;
+  margin: 5px 10px;
+}
+#NameYourShop {
+  min-height: 900px;
+}
+#YourShop2 {
+  min-height: 900px;
+}
+.name-shop {
+  min-height: 387px;
+}
+.name-shop a {
+  color: #555555;
+}
+.name-shop .row {
+  min-height: 78px;
+  max-width: 973px;
+}
+.name-shop h1 {
+  font-size: 32px;
+}
+.name-shop h5 {
+  font-size: 22px;
+}
+.shop-preferences {
+  min-height: 900px;
+}
+.shop-prefer {
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  min-height: 700px;
+}
+.shop-prefer select {
+  height: 40px;
+  font-size: 22px;
+}
+.shop-prefer input {
+  height: 40px;
+  font-size: 22px;
+}
+.shop-prefer label {
+  font-size: 24px;
+}
+.shop-prefer h1 {
+  font-size: 32px;
+}
+.add-stock {
+  width: 154px;
+  height: 202px;
+  padding: 0;
+}
+.food-photo{
+  width: 160px;
+  height: 260px;
+  padding: 0;
+}
+.add-stock img {
+  width: 154px;
+  height: 202px;
+}
+.shop-stock-container {
+  min-height: 1000px;
+}
+.shop-stock .add-stock-contain {
+  min-height: 634px;
+  max-width: 1108px;
+  margin: auto;
+  justify-content: center;
+}
+
+.add-stock-button {
+  border: 1px solid #969696;
+  width: 100%;
+  height: 101px;
+  background-color: #e7f2e3;
+}
+.add-food {
+  font-size: 12px;
+  line-height: 11px;
+}
+.add-food-mod {
+  font-size: 15px;
+  line-height: 18px;
+}
+.add-food-camera {
+  font-size: x-large;
+}
+.add-photo-button {
+  background-color: white;
+  border: 1px dashed #828282;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 94px;
+  height: 94px;
+  margin-top: 33%;
+}
+.add-photo-btn {
+  border-radius: 50px;
+}
+.shop-stock .choose-font {
+  max-width: 801px;
+  min-height: 58px;
+}
+.shop-stock h1 {
+  font-size: 32px;
+}
+.deposit-container {
+  min-height: 2350px;
+}
+.deposit-box {
+  padding: 5% 9% !important;
+  max-width: 1281px;
+  min-height: 709px;
+}
+.deposit-box h4 {
+  font-size: 24px;
+}
+.deposit-box h1 {
+  font-size: 30px;
+}
+.deposit-box p {
+  color: gray;
+  font-size: 20px;
+}
+.deposit-box input {
+  height: 40px;
+  font-size: 22px;
+}
+.set-billing {
+  min-height: 1240px;
+}
+.set-billing h1 {
+  font-size: 32px;
+}
+.set-billing-box {
+  max-width: 1281px;
+  min-height: 1000px;
+  padding: 5% 9%;
+}
+.set-billing-box label,
+input,
+select {
+  height: 40px;
+  font-size: 24px;
+}
+.radio-box .form-check-input {
+  height: 1em !important;
+  margin-top: 0 !important;
+}
+.radio-box h5 {
+  font-size: 20px;
+}
+.form-select {
+  font-size: 18px;
+}
+.set-billing-box h4 {
+  font-size: 32px;
+}
+.submitted {
+  max-width: 700px;
+  min-height: 659px;
+  margin: auto;
+  box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.07);
+}
+.submitted button {
+  color: white;
+  background-color: #50b547;
+  border-radius: 100px;
+  border: none;
+  width: 70px;
+  height: 70px;
+}
+.right-icon {
+  font-size: 40px;
+}
+.submitted p {
+  font-size: 24px;
+  width: 60%;
+  text-align: center;
+}
+.submitted h1 {
+  font-size: 32px;
+}
+.avail-button {
+  width: 130px;
+  height: 36px;
+  color: white;
+  background-color: #ffb703;
+  border-radius: 19px;
+  font-size: 16px;
+}
+.check-avail-button {
+  color: #000000;
+  font-size: 16px;
+}
+.radio-box {
+  margin-top: 10%;
+  margin-left: 25px;
+}
+.radio-box label {
+  font-size: 15px !important;
+}
+.radio-box .form-check {
+  margin-top: 20px;
+}
+.save-button {
+  font-size: 15px;
+  color: white;
+  width: 169px;
+  height: 34px;
+  background-color: #023047;
+  border-radius: 41.5px;
+}
+.cancel-btn {
+  font-size: 15px;
+  width: 169px;
+  height: 34px;
+  border-color: #023047;
+  border-radius: 41.5px;
+}
+.save-button:hover {
+  color: white;
+}
+/* /////////////// remove button/////////// */
+.position-absolute {
+  position: absolute !important;
+  left: 39px;
+  bottom: 73px;
+  opacity: 0.8;
+}
+/* /////////////////// */
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 28px !important;
+  }
+  p {
+    font-size: 20px !important;
+  }
+  .link-para {
+    font-size: 14px !important;
+    font-weight: normal;
+  }
+  label {
+    font-size: 20px !important;
+  }
+  input {
+    font-size: 20px !important;
+    height: 35px !important;
+  }
+  .deposit-box h4 {
+    font-size: 20px;
+  }
+  .deposit-box h1 {
+    font-size: 28px;
+  }
+
+  .deposit-box input {
+    height: 35px;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 568px) {
+  h1 {
+    font-size: 25px !important;
+  }
+  p {
+    font-size: 18px !important;
+  }
+  label {
+    font-size: 18px !important;
+  }
+  input {
+    font-size: 18px !important;
+    height: 30px !important;
+  }
+  .deposit-box h4 {
+    font-size: 18px;
+  }
+  .deposit-box h1 {
+    font-size: 25px;
+  }
+
+  .deposit-box input {
+    height: 30px;
+    font-size: 18px;
+  }
+  .deposit-box select {
+    height: 30px;
+    font-size: 18px;
+  }
+  .shop-prefer select {
+    height: 30px;
+    font-size: 18px;
+  }
+  .modal-body input,
+  label,
+  p {
+    font-size: 14px !important;
+  }
+}

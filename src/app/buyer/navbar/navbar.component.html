@@ -1,0 +1,193 @@
+<nav class="navbar navbar-expand-lg navbar-light mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">
+            <img src=" ../../../assets/images/image 12.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item ms-lg-5">
+                    <a class="nav-link active" aria-current="page" routerLink="/search">Browse Home Foods</a>
+                </li>
+                <li class="nav-item ms-0 ms-lg-5">
+                    <!-- <a class="nav-link active px-5" aria-current="page" href="#">Cart</a> -->
+                    <!-- <button type="button" class="nav-link active notification position-relative" routerLink="/checkout">
+                        Cart
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{foodInCart}}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </button> -->
+                    <button type="button" class="btn notification" routerLink="/cart">
+                        Cart <span class="badge bg-danger">{{foodInCart}}</span>
+                    </button>
+                </li>
+                <li class="nav-item ms-0 ms-lg-auto pe-4">
+                    <div *ngIf="loginUser; then thenBlock else elseBlock">
+                        <p class="text-success"> {{logoutMsg}}</p>
+                    </div>
+                    <ng-template #thenBlock>
+                        <div class="dropdown">
+                            <!-- <img src="../../../assets/images/user.png" alt="Profile" class="img-fluid"> -->
+                            <button class="btn btn-secondary dropdown-toggle fs-5" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{userName}}
+                            </button>
+                            <ul class="dropdown-menu user-dropdown mt-2" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="dropdown-item mx-2" data-bs-toggle="modal" data-bs-target="#edit">
+                                        Edit Your Profile
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item mx-2" routerLink="order">Orders</a></li>
+                                <!-- <li><a class="dropdown-item mx-2">Setting</a></li> -->
+                                <li>
+                                    <a class="dropdown-item mx-2" (click)="userLogout()">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- <i class="fas fa-user-tie fs-3"></i> -->
+                                <i class="far fa-user-circle fs-2"></i>
+                            </button>
+                            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item mx-2" routerLink="/buyer/login">Sign up or Login as a
+                                        User</a>
+                                </li>
+                                <li><a class="dropdown-item mx-2" routerLink="/seller/login">Sign up to Sell Food</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+            <!-- <form class="d-flex me-4">
+
+                <button class="btn " type="submit">Sign up</button>
+            </form> -->
+        </div>
+    </div>
+</nav>
+<!-- Modal -->
+<div class="modal fade" id="edit" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Your Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="my-2 profile">
+                        <img src={{image}} alt="profile" class="img-fluid w-25"><br>
+                        <div class="icon">
+                            <i class="fas fa-camera"></i>
+                            <input type="file" (change)="onImageSelect($event)">
+                        </div>
+                    </div>
+                    <div class="image-buttons" *ngIf="uploadButton">
+                        <button type="button" class="btn-danger" (click)="cancelUpload()">Cancel</button>
+                        <button type="button" class="btn-success" (click)="uploadData('PhotoModal')">Upload</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" minlength="3" maxlength="40"
+                            placeholder={{userName}} [(ngModel)]="tempName" name=buyerName>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobile" class="form-label">Mobile No.</label>
+                        <input type="tel" class="form-control" id="mobile" placeholder={{phoneNumber}}
+                            [(ngModel)]="tempPhone" name=buyerPhone>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn button" (click)="submitUpdate()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+<footer>
+    <div class="container-fluid bg-light12 mt-5 p-0">
+        <div class="container px-8 mt-7 mb-4">
+            <div class="row pt-6 ">
+                <div class="col-md-4">
+                    <img class="logo" src=" ../../../assets/images/footer-logo2.png" alt="">
+                    <p class="mt-7 footer-p fw-bold">Lorem Ipsum is simply dummy text</p>
+                    <p class="footer-p fw-bold"> of the printing and typesetting industry. </p>
+                    <div class="links mt-5 d-flex align-items-center ">
+                        <a href=""><i class="fab fa-facebook mt-1  fs-1 facebook-link"></i></a>
+                        <a href=""><i class="fab fa-instagram footer-link p-2 rounded-circle fs-4 ms-4"></i></a>
+                        <a href=""><i class="fab fa-youtube footer-link p-2 rounded-circle fs-4 ms-4"></i></a>
+                        <a href=""><i class="fab fa-twitter footer-link p-2 rounded-circle fs-4 ms-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8 row">
+                    <div class="col-4">
+                        <p class="together-p text-center">Service</p>
+                        <div>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <p class="together-p text-center">Quick Links</p>
+                        <div>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <p class="together-p text-center">Contact</p>
+                        <div>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+                            <a href="">
+                                <p class="footer-p12 text-center">Lorem Ipsum </p>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-success1 text-center py-2">Lorem Ipsum is simply dummy text</div>
+
+
+    </div>
+</footer>

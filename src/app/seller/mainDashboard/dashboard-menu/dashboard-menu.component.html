@@ -1,0 +1,534 @@
+<div class="col-12 bg-first12 p-0 pe-5">
+    <div class="row">
+        <div class="col-3 pe-4">
+            <div class="bg-body pt-4 pb-2">
+                <div class="pt-5 ps-4">
+                    <p class="food-categorie">
+                        <span class="border-bottom12 pb-2">Food</span> categories
+                    </p>
+                    <p class="food-categorie mt-5">Breakfast</p>
+                    <p class="food-categorie mt-5">Lunch</p>
+                    <p class="food-categorie mt-5">Dinner</p>
+                    <p class="food-categorie mt-5">Snacks</p>
+                    <p class="food-categorie mt-5">Bakery</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-9 ps-2">
+            <div class="mt-5 pt-4">
+                <div class="d-flex">
+                    <div class="col-3 position-relative">
+                        <input class="position-absolute menu-search p-2" type="text" [(ngModel)]="searchfoodValue"
+                            (keyup)="searchFood()" placeholder="Search for items" />
+                             <button class="add-photo-button" (click)="getSearchResult()"> <i
+                                class="fa fa-search position-absolute search-icon fs-6"></i></button>
+                            <div class="suggestions mt-3" *ngIf="suggestions.length">
+                                <select class="form-selects form-control" multiple
+                                    aria-label="Default select example" (click)="selectedFood($event)">
+                                    <option *ngFor="let s of suggestions" value="{{s}}">{{s}}</option>
+                                </select>
+                            </div>
+                       
+                    </div>
+                    <div class="col-3 ms-5 bg-body p-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                            <label class="fs-7 form-check-label" for="inlineCheckbox1">Show Out of stock</label>
+                        </div>
+                    </div>
+                    <div class="col-3 ms-5 bg-body p-2 d-flex justify-content-center menu-addnew">
+                        <button class="add-photo-button" data-bs-toggle="modal" data-bs-target="#PhotoModal">
+                            ADD NEW ITEM
+                        </button>
+                    </div>
+                    <!-- add new item modal body -->
+                    <div class="modal fade" id="PhotoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-width">
+                            <div class="modal-content">
+                                <h2 class="modal-title text-center pt-2" id="exampleModalLabel">Upload Food</h2>
+                                <!-- <button
+                    type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close">
+                </button> -->
+                                <div class="modal-header p-0 m-0 border-0">
+                                </div>
+                                <div class="modal-body">
+                                    <form #addPhoto="ngForm" id="addPhoto">
+                                        <div class="row px-2 mb-2 day-container">
+                                            <div class="col-sm-5 p-2 mb-3 border">
+                                                <div class="row m-auto">
+                                                    <div class="border m-2 p-1 rounded "
+                                                        *ngFor="let photo of images; let i = index"
+                                                        style="width: 150px;height: 150px;"> <img [src]="photo" alt=""
+                                                            style="width: 145px;height: 145px;"></div>
+
+
+                                                    <input type="file" id="getImages" multiple
+                                                        (change)="getFiles($event)" />
+                                                    <!-- <button #getImages class=""> </button> -->
+                                                    <!-- <div class="d-flex flex-column" *ngIf="imageSrc"> <img
+                                                [src]="imageSrc" class="add-stock">
+                                            <button class="btn" (click)="imageSrc = '' ">Remove
+                                            </button>
+                                        </div> -->
+                                                    <!-- <div *ngIf="photo.touched && !photo.valid" [ngClass]="['error']">
+                                        <div *ngIf="photo.errors?.['required']">
+                                            <p class="text-danger">Photo select is required.</p>
+                                        </div>
+                                    </div> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-7 p-3  ">
+                                                <div class="mb-3">
+                                                    <p class="text-start mb-0">Food Name</p>
+                                                    <input type="text" class="form-control" id="foodName"
+                                                        #photo="ngModel" [(ngModel)]="addFoodPhoto.Name" name="Name"
+                                                        required />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3 col-sm-6 ">
+                                                        <p class="text-start mb-0">Price</p>
+                                                        <input type="number" class="form-control" placeholder="$"
+                                                            [(ngModel)]="addFoodPhoto.price" name="price" required />
+                                                    </div>
+                                                    <div class="mb-3 col-sm-6 ">
+                                                        <p class="text-start mb-0">Category</p>
+                                                        <select class="form-select" [(ngModel)]="addFoodPhoto.foodType"
+                                                            name="foodType" aria-label="Default select example"
+                                                            required>
+                                                            <option selected>select</option>
+                                                            <option value="Breakfast">Breakfast</option>
+                                                            <option value="Lunch">Lunch</option>
+                                                            <option value="Snacks">Snacks</option>
+                                                            <option value="Dinner">Dinner</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <p>Select available Dates with available time</p>
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <mat-card class="demo-inline-calendar-card">
+                                                                <mat-calendar [(selected)]="selected">
+                                                                </mat-calendar>
+                                                            </mat-card>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div *ngIf="selected" class=" mt-4">
+                                                                <form #dateForm="ngForm">
+                                                                    <p class="text-start">Selected date</p>
+                                                                    <p class="text-start text-primary">{{selected| date:
+                                                                        'dd/MM/YYYY' }}</p>
+                                                                    <p class="form-check-label text-start mb-0">
+                                                                        Select time from</p>
+                                                                    <input type="time"
+                                                                        class="form-control  fs-6  text-primary"
+                                                                        name=" occasionDateFrom" [(ngModel)]="startTime"
+                                                                        name="startTime" required />
+                                                                    <p class="form-check-label text-start mb-0">
+                                                                        Select time to</p>
+                                                                    <input type="time"
+                                                                        class="form-control  fs-6  text-primary"
+                                                                        name=" occasionDateFrom" [(ngModel)]="endTime"
+                                                                        name="endTime" required />
+                                                                    <button type="button" class="btn btn-primary mt-3"
+                                                                        (click)="getData()"
+                                                                        [disabled]="!dateForm.valid">confirm</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div *ngIf="dataArr.length">
+                                                        <div class="row mt-3">
+
+                                                            <p>Selected Date and Time</p>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0 ml-2 ">Date</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">Time From</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="text-start mb-0">To</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3" *ngFor="let data of  dataArr">
+                                                            <!-- <input type="date" value={{selected}} > -->
+                                                            <div class="col-4 d-flex align-items-center">
+                                                                <!-- <label class="form-check-label  m-auto ">
+                                                        {{selected| date: 'dd/MM/YYYY' }}</label> -->
+                                                                <label class="form-check-label  m-auto ">
+                                                                    {{data.date }}</label>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    value={{data.startTime}} readonly />
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="time" class="form-control  fs-6"
+                                                                    value={{data.endTime}} readonly />
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label d-flex">Description</label>
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" style="height:70px"
+                                                            [(ngModel)]="addFoodPhoto.discription"
+                                                            #description="ngModel" name="discription"
+                                                            required></textarea>
+                                                        <div *ngIf="description.touched">
+                                                            <div *ngIf="description.errors?.['required']">
+                                                                <p class="text-danger text-start">Description is
+                                                                    required.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label d-flex">Food Allergy</label>
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control"
+                                                            [(ngModel)]="addFoodPhoto.foodAllergy"
+                                                            #foodAllergy="ngModel" style="height:70px"
+                                                            name="foodAllergy" required></textarea>
+                                                        <div *ngIf="description.touched">
+                                                            <div *ngIf="foodAllergy.errors?.['required']">
+                                                                <p class="text-danger text-start">Food allergy is
+                                                                    required.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <button type="button" class="btn cancel-btn"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn save-button" aria-label="close"
+                                                        [disabled]="!addPhoto.valid" (click)="uploadData('PhotoModal')"
+                                                        data-bs-dismiss="modal">Upload</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- edit photo modal body -->
+            <div class="modal fade" id="EditFood" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-width">
+                    <div class="modal-content">
+                        <h2 class="modal-title text-center pt-2" id="exampleModalLabel">Upload Food</h2>
+                        <div class="modal-header p-0 m-0 border-0">
+                        </div>
+                        <div class="modal-body">
+                            <form #addPhoto="ngForm" id="addPhoto">
+                                <div class="row px-2 mb-2 day-container">
+                                    <div class="col-sm-5 p-2 mb-3 border">
+                                        <div class="row m-auto">
+                                            <div class="border m-2 p-1 rounded " *ngFor="let photo of foodsImages[0];"
+                                                style="width: 150px;height: 150px;"> <img [src]="photo" alt=""
+                                                    style="width: 145px;height: 145px;">
+                                            </div>
+                                            <div class="border m-2 p-1 rounded " *ngFor="let photo of images;"
+                                                style="width: 150px;height: 150px;"> <img [src]="photo" alt=""
+                                                    style="width: 145px;height: 145px;">
+                                            </div>
+                                            <label for="file" class="my-2">Change photo</label>
+                                            <input type="file" id="getImages" accept="image/*" multiple
+                                                (change)="replaceFiles($event)" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 p-3  ">
+                                        <div class="mb-3">
+                                            <p class="text-start mb-0">Food Name</p>
+                                            <input type="text" class="form-control" id="foodName"
+                                                [value]="foodData.Name" #photo="ngModel" [(ngModel)]="foodData.Name"
+                                                name="Name" required />
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-sm-6 ">
+                                                <p class="text-start mb-0">Price</p>
+                                                <input type="number" class="form-control" [value]="foodData.price"
+                                                    placeholder="$" [(ngModel)]="foodData.price" name="price"
+                                                    required />
+                                            </div>
+                                            <div class="mb-3 col-sm-6 ">
+                                                <p class="text-start mb-0">Category</p>
+                                                <select class="form-select" [(ngModel)]="foodData.foodType"
+                                                    [value]="foodData.foodType" name="foodType"
+                                                    aria-label="Default select example" required>
+                                                    <option value="Breakfast">Breakfast</option>
+                                                    <option value="Lunch">Lunch</option>
+                                                    <option value="Snacks">Snacks</option>
+                                                    <option value="Dinner">Dinner</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <p>Select available Dates with available time</p>
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <mat-card class="demo-inline-calendar-card">
+                                                        <mat-calendar [(selected)]="selected">
+                                                        </mat-calendar>
+                                                    </mat-card>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div *ngIf="selected" class=" mt-4">
+                                                        <form #dateForm="ngForm">
+                                                            <p class="text-start">Selected date</p>
+                                                            <p class="text-start text-primary">{{selected| date:
+                                                                'dd/MM/YYYY' }}</p>
+                                                            <p class="form-check-label text-start mb-0">
+                                                                Select time from</p>
+                                                            <input type="time" class="form-control  fs-6  text-primary"
+                                                                name=" occasionDateFrom" [(ngModel)]="startTime"
+                                                                name="startTime" required />
+                                                            <p class="form-check-label text-start mb-0">
+                                                                Select time to</p>
+                                                            <input type="time" class="form-control  fs-6  text-primary"
+                                                                name=" occasionDateFrom" [(ngModel)]="endTime"
+                                                                name="endTime" required />
+                                                            <button type="button" class="btn btn-primary mt-3"
+                                                                (click)="getData()"
+                                                                [disabled]="!dateForm.valid">confirm</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div *ngIf="dataArr.length">
+                                                <div class="row mt-3">
+
+                                                    <p>Selected Date and Time</p>
+                                                    <div class="col-3">
+                                                        <p class="text-start mb-0 ml-2">Date</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <p class="text-start mb-0">Time From</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <p class="text-start mb-0">To</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <p class="text-start mb-0">Delete row</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3"
+                                                    *ngFor="let data of  dataArr ;let indexOfelement=index;">
+                                                    <!-- <input type="date" value={{selected}} > -->
+                                                    <div class="col-3 d-flex align-items-center">
+                                                        <!-- <label class="form-check-label  m-auto ">
+                                                        {{selected| date: 'dd/MM/YYYY' }}</label> -->
+                                                        <label class="form-check-label  m-auto ">
+                                                            {{data.date }}</label>
+                                                        <!-- <input type="date" class="form-check-label  m-auto "
+                                                            value="data.date"> -->
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input type="time" class="form-control  fs-6"
+                                                            value={{data.startTime}} />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input type="time" class="form-control  fs-6"
+                                                            value={{data.endTime}} />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <button class="btn btn-primary"
+                                                            (click)="deleteDate(indexOfelement)">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label d-flex">Description</label>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" style="height:70px"
+                                                    [(ngModel)]="foodData.discription" #description="ngModel"
+                                                    name="discription" [value]="foodData.discription"
+                                                    required></textarea>
+                                                <div *ngIf="description.touched">
+                                                    <div *ngIf="description.errors?.['required']">
+                                                        <p class="text-danger text-start">Description is required.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label d-flex">Food Allergy</label>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" [(ngModel)]="foodData.foodAllergy"
+                                                    #foodAllergy="ngModel" [value]="foodData.foodAllergy"
+                                                    style="height:70px" name="foodAllergy" required></textarea>
+                                                <div *ngIf="description.touched">
+                                                    <div *ngIf="foodAllergy.errors?.['required']">
+                                                        <p class="text-danger text-start">Food allergy is required.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button" class="btn cancel-btn"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn save-button" aria-label="close"
+                                                (click)="updateFoodData()" data-bs-dismiss="modal">Upload</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 bg-body p-3" *ngIf="searchFoodArr">
+                <p class="food-categorie mt-2">Search Food</p>
+                <div class="border row py-2" *ngFor="let item of searchFoodArr">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class=" slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 bg-body p-3">
+                <p class="food-categorie mt-2">Breakfast</p>
+                <div class="border row py-2" *ngFor="let item of breakfastFood">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class=" slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-4 bg-body p-3">
+                <p class="food-categorie mt-2">Lunch</p>
+                <div class="border row py-2" *ngFor="let item of lunchFood">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-4 bg-body p-3">
+                <p class="food-categorie mt-2">Dinner</p>
+                <div class="border row py-2" *ngFor="let item of dinnerFood">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="pt-4 bg-body p-3">
+                <p class="food-categorie mt-2">Snacks</p>
+                <div class="border row py-2" *ngFor="let item of snacksFood">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 bg-body p-3">
+                <p class="food-categorie mt-2">Other</p>
+                <div class="border row py-2" *ngFor="let item of otherFood">
+                    <div class="col-4">
+                        <p class="menufood-name mb-0">{{item.Name}}</p>
+                        <p class="menufood-price mb-0">${{item.price}}</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <label class="switch">
+                            <input type="checkbox" [checked]="item.activeFood"
+                                (change)="foodStatus(item.docId,item.activeFood)" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-flex jcc align-items-center">
+                        <button class="btn menu-btn px-4" data-bs-toggle="modal" data-bs-target="#EditFood"
+                            (click)="editFoodData(item.docId)">Edit</button>
+                        <button class="btn menu-btn px-4 ms-4" (click)="deleteDocument(item.docId)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

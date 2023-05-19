@@ -1,0 +1,116 @@
+html {
+    font-size: 99%;
+}
+h1, h4, h3, h5, h6, h2, button, a, p, label, div {
+    font-family: 'Montserrat' !important;
+    font-style: normal;
+}
+a {
+    color: rgba(0, 0, 0, 1) !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.ps-7 {
+    padding-left: 4rem !important;
+}
+.logo {
+width: 65%;
+margin-top: -44px;
+}
+
+.btn-secondary12 {
+    background: #219EBC !important;
+    color: white !important;
+    margin-left: -127px !important;
+    font-weight: 500 !important;
+}
+
+.px-8 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+}
+
+.bg-light12 {
+    background-color: rgba(255, 183, 3, 0.27);
+}
+
+.footer-p {
+    font-size: 0.8rem;
+}
+
+.footer-link {
+    background-color: #023047;
+    color: white;
+}
+
+.facebook-link {
+    color: #023047 !important;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.footer-p12 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 3rem;
+}
+
+.pt-6 {
+    padding-top: 5rem !important;
+}
+
+.bg-success1 {
+    background: #219EBC;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.together-p {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.mt-7{
+    margin-top: 3.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 80%;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 762px) {
+    html {
+        font-size: 55%;
+    }
+
+    .footer-p {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+    }
+
+    .col-md-8.row {
+        margin-top: 2rem;
+    }
+
+    .bg-success1 {
+        
+        font-size: 1.12rem;
+    }
+
+    }
